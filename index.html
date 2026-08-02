@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BQI Data — Point-in-Time Market Data for Taiwan, Japan & US</title>
+<meta name="description" content="Point-in-time structured market data for Taiwan, Japan, and US markets. Built for quantitative researchers who need backtests that don't cheat.">
+<style>
+  :root{
+    --bg: #0B1220;
+    --panel: #121B2E;
+    --panel-line: #223047;
+    --ink: #E9ECF3;
+    --ink-dim: #8B98B3;
+    --amber: #E8A33D;
+    --amber-dim: #7A5A26;
+    --green: #4FAE8A;
+    --mono: 'IBM Plex Mono', 'SFMono-Regular', Consolas, monospace;
+    --grotesk: 'Space Grotesk', 'Inter', sans-serif;
+    --body: 'Inter', -apple-system, sans-serif;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body{
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--body);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  a { color: inherit; }
+
+  img.bg-grid{ display:none; }
+
+  /* ---------- Ticker tape ---------- */
+  .ticker-wrap{
+    background: #070C16;
+    border-bottom: 1px solid var(--panel-line);
+    overflow: hidden;
+    white-space: nowrap;
+    padding: 10px 0;
+  }
+  .ticker{
+    display: inline-block;
+    font-family: var(--mono);
+    font-size: 13px;
+    letter-spacing: 0.02em;
+    animation: scroll-left 38s linear infinite;
+    color: var(--ink-dim);
+  }
+  .ticker span.up{ color: var(--green); }
+  .ticker span.dn{ color: #C46B5C; }
+  .ticker span.code{ color: var(--ink); font-weight: 600; margin-right:4px; }
+  .ticker .tick{ margin: 0 22px; }
+  @keyframes scroll-left{
+    0%{ transform: translateX(0); }
+    100%{ transform: translateX(-50%); }
+  }
+
+  /* ---------- Nav ---------- */
+  header.site{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding: 22px 6vw;
+    border-bottom: 1px solid var(--panel-line);
+  }
+  .brand{
+    font-family: var(--grotesk);
+    font-weight: 700;
+    font-size: 18px;
+    letter-spacing: 0.02em;
+    display:flex;
+    align-items:center;
+    gap:10px;
+  }
+  .brand .dot{
+    width:8px; height:8px; border-radius:50%;
+    background: var(--amber);
+    box-shadow: 0 0 8px 2px rgba(232,163,61,0.5);
+  }
+  nav.links{
+    display:flex; gap: 28px;
+    font-size: 14px;
+    color: var(--ink-dim);
+  }
+  nav.links a:hover{ color: var(--amber); }
+
+  .btn{
+    display:inline-block;
+    font-family: var(--mono);
+    font-size: 13px;
+    letter-spacing: 0.03em;
+    padding: 10px 20px;
+    border-radius: 3px;
+    text-decoration: none;
+    transition: all .15s ease;
+  }
+  .btn-primary{
+    background: var(--amber);
+    color: #14100A;
+    font-weight: 600;
+  }
+  .btn-primary:hover{ background: #f2b458; }
+  .btn-ghost{
+    border: 1px solid var(--panel-line);
+    color: var(--ink);
+  }
+  .btn-ghost:hover{ border-color: var(--amber); color: var(--amber); }
+
+  /* ---------- Hero ---------- */
+  .hero{
+    padding: 100px 6vw 90px;
+    max-width: 980px;
+  }
+  .eyebrow{
+    font-family: var(--mono);
+    font-size: 12.5px;
+    color: var(--amber);
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    margin-bottom: 22px;
+    display:flex; align-items:center; gap:10px;
+  }
+  .eyebrow::before{
+    content:"";
+    width: 26px; height:1px;
+    background: var(--amber);
+  }
+  h1{
+    font-family: var(--grotesk);
+    font-size: clamp(34px, 5.2vw, 58px);
+    line-height: 1.08;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    max-width: 15ch;
+  }
+  h1 em{
+    font-style: normal;
+    color: var(--amber);
+  }
+  .hero p.sub{
+    margin-top: 26px;
+    font-size: 17px;
+    color: var(--ink-dim);
+    max-width: 56ch;
+  }
+  .hero-cta{
+    margin-top: 38px;
+    display:flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    align-items:center;
+  }
+  .hero-cta .btn-primary{ padding: 14px 26px; font-size: 14px; }
+  .hero-note{
+    font-family: var(--mono);
+    font-size: 12.5px;
+    color: var(--ink-dim);
+  }
+
+  /* ---------- Section shell ---------- */
+  section{
+    padding: 78px 6vw;
+    border-bottom: 1px solid var(--panel-line);
+  }
+  .section-head{
+    display:flex;
+    align-items:baseline;
+    gap: 14px;
+    margin-bottom: 40px;
+  }
+  .section-num{
+    font-family: var(--mono);
+    color: var(--amber-dim);
+    font-size: 13px;
+  }
+  h2{
+    font-family: var(--grotesk);
+    font-size: 26px;
+    font-weight: 600;
+  }
+
+  /* ---------- Coverage table ---------- */
+  .coverage-grid{
+    display:grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1px;
+    background: var(--panel-line);
+    border: 1px solid var(--panel-line);
+  }
+  .cov-cell{
+    background: var(--panel);
+    padding: 22px 24px;
+  }
+  .cov-market{
+    font-family: var(--mono);
+    font-size: 11.5px;
+    color: var(--amber);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 14px;
+  }
+  .cov-row{
+    display:flex;
+    justify-content: space-between;
+    font-size: 14px;
+    padding: 7px 0;
+    border-top: 1px solid var(--panel-line);
+    color: var(--ink-dim);
+  }
+  .cov-row:first-of-type{ border-top: none; }
+  .cov-row .yr{
+    font-family: var(--mono);
+    color: var(--ink);
+  }
+
+  /* ---------- Methodology ---------- */
+  .method-grid{
+    display:grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 34px;
+  }
+  .method-card .idx{
+    font-family: var(--mono);
+    color: var(--amber);
+    font-size: 13px;
+    margin-bottom: 12px;
+  }
+  .method-card h3{
+    font-family: var(--grotesk);
+    font-size: 17px;
+    font-weight: 600;
+    margin-bottom: 10px;
+  }
+  .method-card p{
+    color: var(--ink-dim);
+    font-size: 14.5px;
+  }
+
+  /* ---------- Sample product ---------- */
+  .sample-card{
+    background: var(--panel);
+    border: 1px solid var(--panel-line);
+    padding: 40px;
+    display:grid;
+    grid-template-columns: 1fr auto;
+    gap: 30px;
+    align-items:center;
+  }
+  .sample-card .tag{
+    font-family: var(--mono);
+    font-size: 11.5px;
+    color: var(--green);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 14px;
+  }
+  .sample-card h3{
+    font-family: var(--grotesk);
+    font-size: 22px;
+    font-weight: 600;
+    margin-bottom: 10px;
+  }
+  .sample-card p{ color: var(--ink-dim); font-size: 14.5px; max-width: 52ch; }
+  .sample-fields{
+    display:flex; flex-wrap:wrap; gap:8px;
+    margin-top: 18px;
+  }
+  .field-chip{
+    font-family: var(--mono);
+    font-size: 11.5px;
+    color: var(--ink-dim);
+    border: 1px solid var(--panel-line);
+    padding: 4px 10px;
+    border-radius: 3px;
+  }
+  .price-block{
+    text-align: right;
+    white-space: nowrap;
+  }
+  .price{
+    font-family: var(--mono);
+    font-size: 34px;
+    color: var(--amber);
+    font-weight: 600;
+  }
+  .price-sub{
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--ink-dim);
+    margin-bottom: 12px;
+  }
+
+  @media (max-width: 680px){
+    .sample-card{ grid-template-columns: 1fr; }
+    .price-block{ text-align: left; }
+  }
+
+  /* ---------- Contact ---------- */
+  .contact-section{ border-bottom: none; }
+  .contact-box{
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+  .contact-box p{
+    color: var(--ink-dim);
+    max-width: 46ch;
+    font-size: 15px;
+  }
+
+  footer{
+    padding: 30px 6vw;
+    display:flex;
+    justify-content:space-between;
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--ink-dim);
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  @media (max-width: 640px){
+    header.site{ padding: 18px 5vw; }
+    nav.links{ display:none; }
+    .hero{ padding: 70px 5vw 60px; }
+    section{ padding: 56px 5vw; }
+  }
+</style>
+</head>
+<body>
+
+  <div class="ticker-wrap">
+    <div class="ticker" id="tickerTrack"></div>
+  </div>
+
+  <header class="site">
+    <div class="brand"><span class="dot"></span>BQI DATA</div>
+    <nav class="links">
+      <a href="#coverage">Coverage</a>
+      <a href="#methodology">Methodology</a>
+      <a href="#sample">Sample</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <a class="btn btn-ghost" href="#sample">View Sample →</a>
+  </header>
+
+  <section class="hero">
+    <div class="eyebrow">Structured Market Data</div>
+    <h1>Historical market data, dated to what was <em>actually knowable</em> at the time.</h1>
+    <p class="sub">
+      We maintain structured price, financial statement, and dividend data for Taiwan, Japan, and US markets.
+      Every metric that depends on disclosed figures — like market capitalization — is calculated using
+      point-in-time availability, not retroactively known values.
+    </p>
+    <div class="hero-cta">
+      <a class="btn btn-primary" href="https://polar.sh/checkout/polar_c_isjc3y4x3x88UP2g5skSQxYvUpdatkLFGKtdn3czgjZ">Get the $0.99 Sample →</a>
+      <span class="hero-note">No account required · Instant delivery</span>
+    </div>
+  </section>
+
+  <section id="coverage">
+    <div class="section-head">
+      <span class="section-num">01</span>
+      <h2>Market Coverage</h2>
+    </div>
+    <div class="coverage-grid">
+      <div class="cov-cell">
+        <div class="cov-market">Taiwan</div>
+        <div class="cov-row"><span>Stock price data</span><span class="yr">since 1992</span></div>
+        <div class="cov-row"><span>Financial statements</span><span class="yr">since 1989</span></div>
+        <div class="cov-row"><span>Director/supervisor holdings</span><span class="yr">since 2000</span></div>
+        <div class="cov-row"><span>Business indicators</span><span class="yr">since 1982</span></div>
+        <div class="cov-row"><span>Dividend data</span><span class="yr">since 2000</span></div>
+      </div>
+      <div class="cov-cell">
+        <div class="cov-market">Japan</div>
+        <div class="cov-row"><span>Stock price data</span><span class="yr">since 1999</span></div>
+        <div class="cov-row"><span>Financial statements</span><span class="yr">since 2014</span></div>
+      </div>
+      <div class="cov-cell">
+        <div class="cov-market">United States</div>
+        <div class="cov-row"><span>Stock price data</span><span class="yr">since 1993</span></div>
+        <div class="cov-row"><span>Financial statements</span><span class="yr">since 2009</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="methodology">
+    <div class="section-head">
+      <span class="section-num">02</span>
+      <h2>How the Data Is Dated</h2>
+    </div>
+    <div class="method-grid">
+      <div class="method-card">
+        <div class="idx">/ 01</div>
+        <h3>Point-in-time availability</h3>
+        <p>Market cap and similar derived fields use the share capital figure that was actually disclosed
+           as of each historical date — not the figure known today.</p>
+      </div>
+      <div class="method-card">
+        <div class="idx">/ 02</div>
+        <h3>Documented fallback logic</h3>
+        <p>When disclosure timing data is missing or inconsistent, we fall back to statutory filing
+           deadlines. The full rule set is documented, not hidden.</p>
+      </div>
+      <div class="method-card">
+        <div class="idx">/ 03</div>
+        <h3>Backward-adjusted pricing</h3>
+        <p>Adjusted close prices are anchored to the most recent trading date in each dataset and
+           adjusted backward through dividend events.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="sample">
+    <div class="section-head">
+      <span class="section-num">03</span>
+      <h2>Try the Sample</h2>
+    </div>
+    <div class="sample-card">
+      <div>
+        <div class="tag">Sample Dataset</div>
+        <h3>Taiwan Listed Companies Historical Dataset Sample (2015 Q3)</h3>
+        <p>TWSE-listed companies in our database, 4-digit tickers, excluding ETFs. Daily frequency,
+           June–September 2015. Meant for reviewing structure and methodology before buying the full dataset.</p>
+        <div class="sample-fields">
+          <span class="field-chip">ticker</span>
+          <span class="field-chip">OHLCV</span>
+          <span class="field-chip">market_cap</span>
+          <span class="field-chip">cash_dividend</span>
+          <span class="field-chip">stock_dividend</span>
+          <span class="field-chip">adjusted_close</span>
+        </div>
+      </div>
+      <div class="price-block">
+        <div class="price-sub">one-time</div>
+        <div class="price">$0.99</div>
+        <a class="btn btn-primary" style="margin-top:16px; display:inline-block;"
+           href="https://polar.sh/checkout/polar_c_isjc3y4x3x88UP2g5skSQxYvUpdatkLFGKtdn3czgjZ">Buy Sample →</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="contact-section">
+    <div class="section-head">
+      <span class="section-num">04</span>
+      <h2>Looking for More?</h2>
+    </div>
+    <div class="contact-box">
+      <p>Longer date ranges, additional markets, or additional fields — financial statements, director/supervisor
+         holdings, business indicators. Reach out and we'll put together a plan that fits your research.</p>
+      <a class="btn btn-ghost" href="mailto:bqi.mitty@gmail.com">bqi.mitty@gmail.com</a>
+    </div>
+  </section>
+
+  <footer>
+    <span>© 2026 BQI Data</span>
+    <span>Data provided for research and reference purposes only. Not investment advice.</span>
+  </footer>
+
+<script>
+  // Build ticker tape content (mock, decorative — not live data)
+  const rows = [
+    ["2330", "+1.2%", true], ["2884", "-0.4%", false], ["2317", "+0.8%", true],
+    ["6505", "+0.1%", true], ["1301", "-0.6%", false], ["2454", "+2.1%", true],
+    ["2412", "+0.3%", true], ["1216", "-0.2%", false], ["2308", "+1.5%", true],
+    ["3008", "-1.1%", false]
+  ];
+  const build = () => rows.map(([code, chg, up]) =>
+    `<span class="tick"><span class="code">${code}</span><span class="${up ? 'up' : 'dn'}">${chg}</span></span>`
+  ).join("");
+  const track = document.getElementById('tickerTrack');
+  track.innerHTML = build() + build(); // duplicate for seamless loop
+</script>
+
+</body>
+</html>
