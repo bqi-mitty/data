@@ -8,8 +8,8 @@
 <style>
   :root{
     --bg: #0B1220;
-    --panel: #121B2E;
-    --panel-line: #223047;
+    --panel: #182848;
+    --panel-line: #3A5788;
     --ink: #E9ECF3;
     --ink-dim: #8B98B3;
     --amber: #E8A33D;
@@ -40,14 +40,20 @@
   .ticker-wrap{
     background: #070C16;
     border-bottom: 1px solid var(--panel-line);
+    display: flex;
+    align-items: center;
+    padding: 7px 0;
+  }
+  .ticker-scroll{
+    flex: 1;
     overflow: hidden;
     white-space: nowrap;
-    padding: 10px 0;
+    padding-left: 6vw;
   }
   .ticker{
     display: inline-block;
     font-family: var(--mono);
-    font-size: 13px;
+    font-size: 11px;
     letter-spacing: 0.02em;
     animation: scroll-left 38s linear infinite;
     color: var(--ink-dim);
@@ -55,21 +61,21 @@
   .ticker span.up{ color: var(--green); }
   .ticker span.dn{ color: #C46B5C; }
   .ticker span.code{ color: var(--ink); font-weight: 600; margin-right:4px; }
-  .ticker .tick{ margin: 0 22px; }
+  .ticker .tick{ margin: 0 18px; }
   @keyframes scroll-left{
     0%{ transform: translateX(0); }
     100%{ transform: translateX(-50%); }
   }
   .ticker-note{
-    background: #070C16;
-    border-bottom: 1px solid var(--panel-line);
-    text-align: center;
+    flex-shrink: 0;
     font-family: var(--mono);
-    font-size: 10.5px;
-    letter-spacing: 0.06em;
+    font-size: 9.5px;
+    letter-spacing: 0.05em;
     text-transform: uppercase;
     color: var(--ink-dim);
-    padding: 4px 0 8px;
+    border-left: 1px solid var(--panel-line);
+    padding: 0 6vw 0 14px;
+    white-space: nowrap;
   }
 
   /* ---------- Nav ---------- */
@@ -310,6 +316,18 @@
   @media (max-width: 680px){
     .sample-card{ grid-template-columns: 1fr; }
     .price-block{ text-align: left; }
+    .pricing-grid{
+      display: flex;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      gap: 16px;
+      padding-bottom: 10px;
+      -webkit-overflow-scrolling: touch;
+    }
+    .plan-card{
+      flex: 0 0 82%;
+      scroll-snap-align: start;
+    }
   }
 
   /* ---------- Team ---------- */
@@ -331,7 +349,7 @@
   .leader-photo{
     width: 140px;
     height: 140px;
-    border-radius: 6px;
+    border-radius: 50%;
     object-fit: cover;
     border: 1px solid var(--panel-line);
   }
@@ -340,19 +358,14 @@
     font-size: 19px;
     font-weight: 600;
   }
-  .leader-title{
-    font-family: var(--mono);
-    font-size: 12px;
-    color: var(--amber);
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    margin: 6px 0 16px;
-  }
-  .leader-bio{
+  .leader-bio-list{
     color: var(--ink-dim);
     font-size: 14.5px;
     max-width: 56ch;
+    margin-top: 14px;
+    padding-left: 18px;
   }
+  .leader-bio-list li{ margin-bottom: 8px; }
   @media (max-width: 560px){
     .leader-card{ grid-template-columns: 1fr; }
     .leader-photo{ width: 100px; height: 100px; }
@@ -416,6 +429,27 @@
     font-size: 14px;
     margin: 16px 0 20px;
   }
+  .bullet-list{
+    color: var(--ink-dim);
+    font-size: 14px;
+    margin: 16px 0 20px;
+    padding-left: 18px;
+  }
+  .bullet-list li{ margin-bottom: 6px; }
+  .features-toggle{
+    background: none;
+    border: none;
+    color: var(--amber);
+    font-family: var(--mono);
+    font-size: 12px;
+    letter-spacing: 0.03em;
+    cursor: pointer;
+    padding: 0;
+    margin-bottom: 18px;
+    text-align: left;
+  }
+  .features-toggle:hover{ color: #f2b458; }
+  .plan-features{ margin-bottom: 6px; }
   .plan-fields{
     display:flex; flex-wrap:wrap; gap:7px;
     margin-bottom: 26px;
@@ -429,6 +463,24 @@
   .plan-card .btn{
     margin-top: auto;
     text-align: center;
+  }
+
+  /* ---------- FAQ ---------- */
+  .faq-item{
+    border-top: 1px solid var(--panel-line);
+    padding: 20px 0;
+  }
+  .faq-item:last-child{ border-bottom: 1px solid var(--panel-line); }
+  .faq-q{
+    font-family: var(--grotesk);
+    font-size: 15.5px;
+    font-weight: 600;
+    margin-bottom: 8px;
+  }
+  .faq-a{
+    color: var(--ink-dim);
+    font-size: 14.5px;
+    max-width: 62ch;
   }
 
   /* ---------- Contact ---------- */
@@ -456,6 +508,9 @@
     flex-wrap: wrap;
     gap: 10px;
   }
+  footer a{ color: var(--ink-dim); text-decoration: none; }
+  footer a:hover{ color: var(--amber); }
+  .footer-links{ display:flex; gap: 16px; }
 
   @media (max-width: 640px){
     header.site{ padding: 18px 5vw; }
@@ -468,9 +523,9 @@
 <body>
 
   <div class="ticker-wrap">
-    <div class="ticker" id="tickerTrack"></div>
+    <div class="ticker-scroll"><div class="ticker" id="tickerTrack"></div></div>
+    <div class="ticker-note">Illustrative data, not live quotes</div>
   </div>
-  <div class="ticker-note">Illustrative data, not live quotes</div>
 
   <header class="site">
     <div class="brand"><span class="dot"></span>BQI DATA</div>
@@ -480,6 +535,7 @@
       <a href="#pricing">Pricing</a>
       <a href="#sample">Sample</a>
       <a href="#team">Team</a>
+      <a href="#faq">FAQ</a>
       <a href="#contact">Contact</a>
     </nav>
     <a class="btn btn-ghost" href="#sample">View Sample →</a>
@@ -507,7 +563,7 @@
     </div>
     <div class="coverage-grid">
       <div class="cov-cell">
-        <div class="cov-market">Taiwan</div>
+        <div class="cov-market">🇹🇼 Taiwan</div>
         <div class="cov-row"><span>Stock price data</span><span class="yr">since 1992</span></div>
         <div class="cov-row"><span>Financial statements</span><span class="yr">since 1989</span></div>
         <div class="cov-row"><span>Director/supervisor holdings</span><span class="yr">since 2000</span></div>
@@ -515,12 +571,12 @@
         <div class="cov-row"><span>Dividend data</span><span class="yr">since 2000</span></div>
       </div>
       <div class="cov-cell">
-        <div class="cov-market">Japan</div>
+        <div class="cov-market">🇯🇵 Japan</div>
         <div class="cov-row"><span>Stock price data</span><span class="yr">since 1999</span></div>
         <div class="cov-row"><span>Financial statements</span><span class="yr">since 2014</span></div>
       </div>
       <div class="cov-cell">
-        <div class="cov-market">United States</div>
+        <div class="cov-market">🇺🇸 United States</div>
         <div class="cov-row"><span>Stock price data</span><span class="yr">since 1993</span></div>
         <div class="cov-row"><span>Financial statements</span><span class="yr">since 2009</span></div>
       </div>
@@ -577,49 +633,61 @@
         <div class="plan-tag">Lite</div>
         <div class="plan-name">Daily OHLCV</div>
         <div class="plan-price">$14.99<span class="unit">/ month</span></div>
-        <p class="plan-desc">
-          Full TWSE-listed universe, daily open/high/low/close/volume. Built for price-and-volume
-          strategies that don't need fundamentals.
-        </p>
-        <div class="plan-fields">
-          <span class="field-chip">ticker</span>
-          <span class="field-chip">OHLCV</span>
-          <span class="field-chip">daily delivery</span>
+        <ul class="bullet-list">
+          <li>Full TWSE-listed universe, updated daily</li>
+          <li>Built for price-and-volume strategies</li>
+          <li>CSV delivery, no integration required</li>
+        </ul>
+        <button class="features-toggle" onclick="toggleFeatures(this)">Show Features +</button>
+        <div class="plan-features" style="display:none;">
+          <div class="plan-fields">
+            <span class="field-chip">ticker</span>
+            <span class="field-chip">OHLCV</span>
+            <span class="field-chip">daily delivery</span>
+          </div>
+          <div class="plan-note">Delivered by email at 19:00 (UTC+8) daily</div>
         </div>
-        <div class="plan-note">Sent by email at 19:00 (UTC+8), resent at 07:00 the next morning</div>
         <a class="btn btn-primary" href="https://buy.polar.sh/polar_cl_NzpEZLD7440VTLMEceWY5a0LLp9TMctIapo192lcgIF">Subscribe →</a>
       </div>
       <div class="plan-card featured">
         <div class="plan-tag">Most popular</div>
         <div class="plan-name">Standard</div>
         <div class="plan-price">$34.99<span class="unit">/ month</span></div>
-        <p class="plan-desc">
-          Everything in Lite, plus point-in-time market cap, dividends, and backward-adjusted close —
-          the same fields as our full-market sample dataset, updated daily.
-        </p>
-        <div class="plan-fields">
-          <span class="field-chip">ticker</span>
-          <span class="field-chip">OHLCV</span>
-          <span class="field-chip">market_cap</span>
-          <span class="field-chip">cash_dividend</span>
-          <span class="field-chip">stock_dividend</span>
-          <span class="field-chip">adjusted_close</span>
+        <ul class="bullet-list">
+          <li>Everything in Lite</li>
+          <li>Adds point-in-time market cap, dividends, and adjusted close</li>
+          <li>Same fields as our full-market sample dataset</li>
+        </ul>
+        <button class="features-toggle" onclick="toggleFeatures(this)">Show Features +</button>
+        <div class="plan-features" style="display:none;">
+          <div class="plan-fields">
+            <span class="field-chip">ticker</span>
+            <span class="field-chip">OHLCV</span>
+            <span class="field-chip">market_cap</span>
+            <span class="field-chip">cash_dividend</span>
+            <span class="field-chip">stock_dividend</span>
+            <span class="field-chip">adjusted_close</span>
+          </div>
+          <div class="plan-note">Delivered by email at 19:00 (UTC+8) daily</div>
         </div>
-        <div class="plan-note">Sent by email at 19:00 (UTC+8), resent at 07:00 the next morning</div>
         <a class="btn btn-primary" href="https://buy.polar.sh/polar_cl_JEaZ2B9QSpcwsmlSG0X5JTUxqgEZNdW0wUnJj0dwpMJ">Subscribe →</a>
       </div>
       <div class="plan-card">
         <div class="plan-tag">Pro / Custom</div>
         <div class="plan-name">Tell us what you need</div>
         <div class="plan-price">Custom</div>
-        <p class="plan-desc">
-          Specific watchlists, financial statement fields, director/supervisor holdings, full historical
-          backfill, or Japan/US coverage — priced to what you actually use.
-        </p>
-        <div class="plan-fields">
-          <span class="field-chip">custom tickers</span>
-          <span class="field-chip">financial statements</span>
-          <span class="field-chip">full history</span>
+        <ul class="bullet-list">
+          <li>Specific watchlists or tickers</li>
+          <li>Financial statement fields, director/supervisor holdings</li>
+          <li>Full historical backfill or Japan/US coverage</li>
+        </ul>
+        <button class="features-toggle" onclick="toggleFeatures(this)">Show Features +</button>
+        <div class="plan-features" style="display:none;">
+          <div class="plan-fields">
+            <span class="field-chip">custom tickers</span>
+            <span class="field-chip">financial statements</span>
+            <span class="field-chip">full history</span>
+          </div>
         </div>
         <a class="btn btn-ghost" href="mailto:bqi.mitty@gmail.com?subject=Custom%20dataset%20inquiry">Contact us →</a>
         <div style="font-family: var(--mono); font-size: 11.5px; color: var(--ink-dim); margin-top: 10px; user-select: all;">
@@ -632,21 +700,27 @@
   <section id="sample">
     <div class="section-head">
       <span class="section-num">04</span>
-      <h2>Try the Sample</h2>
+      <h2>Try Our Sample</h2>
     </div>
     <div class="sample-card">
       <div>
         <div class="tag">Sample Dataset</div>
         <h3>Taiwan Listed Companies Historical Dataset Sample (2015 Jun-Aug)</h3>
-        <p>TWSE-listed companies in our database, 4-digit tickers, excluding ETFs. Daily frequency,
-           Jun–Aug 2015. Meant for reviewing structure and methodology before buying the full dataset.</p>
-        <div class="sample-fields">
-          <span class="field-chip">ticker</span>
-          <span class="field-chip">OHLCV</span>
-          <span class="field-chip">market_cap</span>
-          <span class="field-chip">cash_dividend</span>
-          <span class="field-chip">stock_dividend</span>
-          <span class="field-chip">adjusted_close</span>
+        <ul class="bullet-list" style="margin-top:14px;">
+          <li>Preview our data structure and methodology</li>
+          <li>TWSE-listed companies, Jun–Aug 2015</li>
+          <li>One-time purchase, instant download</li>
+        </ul>
+        <button class="features-toggle" onclick="toggleFeatures(this)">Show Features +</button>
+        <div class="plan-features" style="display:none;">
+          <div class="sample-fields">
+            <span class="field-chip">ticker</span>
+            <span class="field-chip">OHLCV</span>
+            <span class="field-chip">market_cap</span>
+            <span class="field-chip">cash_dividend</span>
+            <span class="field-chip">stock_dividend</span>
+            <span class="field-chip">adjusted_close</span>
+          </div>
         </div>
       </div>
       <div class="price-block">
@@ -672,20 +746,61 @@
       <img class="leader-photo" src="team-leader.jpg" alt="Shaochieh Hu">
       <div>
         <div class="leader-name">Shaochieh Hu</div>
-        <div class="leader-title">Founder</div>
-        <p class="leader-bio">
-          Five years building real-time financial data pipelines at Yuanta Securities Investment Trust —
-          integrating Bloomberg, Refinitiv, and ICE feeds, and engineering real-time NAV estimation systems
-          across the firm's ETF lineup. Independently researching and building financial market data
-          pipelines since 2011.
-        </p>
+        <ul class="leader-bio-list">
+          <li>Building BQI Data — structured, point-in-time financial market data for Taiwan, Japan, and US markets</li>
+          <li>Built and maintained real-time financial data pipelines at Yuanta Securities Investment Trust, engineering NAV estimation systems across the firm's ETF lineup</li>
+          <li>Experienced integrating Bloomberg, Refinitiv, and ICE data feeds</li>
+        </ul>
       </div>
+    </div>
+  </section>
+
+  <section id="faq">
+    <div class="section-head">
+      <span class="section-num">06</span>
+      <h2>FAQ</h2>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">What is point-in-time data, and why does it matter?</div>
+      <div class="faq-a">Point-in-time data reflects only the information that was actually available as of each historical date — for example, market cap is calculated using the share capital figure known at that time, not the figure known today. This avoids look-ahead bias in backtests.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">What markets and time ranges do you cover?</div>
+      <div class="faq-a">Taiwan (TWSE), with additional Japan and US datasets available. See the Market Coverage section above for exact date ranges per data type.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">What's the difference between Lite and Standard?</div>
+      <div class="faq-a">Lite includes daily OHLCV only. Standard adds point-in-time market cap, cash and stock dividends, and backward-adjusted close.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">How is the data delivered?</div>
+      <div class="faq-a">By email as a CSV file, delivered daily at 19:00 (UTC+8). No API key or integration required.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Can I cancel my subscription anytime?</div>
+      <div class="faq-a">Yes, subscriptions can be cancelled anytime through your Polar customer portal, effective at the end of the current billing period.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Can I resell or redistribute the data?</div>
+      <div class="faq-a">No — data is licensed for internal research use only. Redistribution or resale of raw data requires written permission.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Is this investment advice?</div>
+      <div class="faq-a">No. Data is provided for research and reference purposes only.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">What if I find an error in the data?</div>
+      <div class="faq-a">Email us at bqi.mitty@gmail.com with the ticker and date — we investigate and correct verified issues.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Do you offer custom datasets (different markets, fields, or history)?</div>
+      <div class="faq-a">Yes — see the Pro/Custom plan, or email us directly to discuss your needs.</div>
     </div>
   </section>
 
   <section id="contact" class="contact-section">
     <div class="section-head">
-      <span class="section-num">06</span>
+      <span class="section-num">07</span>
       <h2>Looking for More?</h2>
     </div>
     <div class="contact-box">
@@ -706,6 +821,7 @@
     <span>© 2026 BQI Data</span>
     <span>+886-912-296-321 · No. 12, Aly. 12, Ln. 232, Dafu Rd., Zhuangwei Township, Yilan County 263, Taiwan</span>
     <span>Data provided for research and reference purposes only. Not investment advice.</span>
+    <span class="footer-links"><a href="terms.html">Terms of Use</a><a href="privacy.html">Privacy Policy</a></span>
   </footer>
 
 <script>
@@ -721,6 +837,13 @@
   ).join("");
   const track = document.getElementById('tickerTrack');
   track.innerHTML = build() + build(); // duplicate for seamless loop
+
+  function toggleFeatures(btn){
+    const panel = btn.nextElementSibling;
+    const show = panel.style.display === 'none';
+    panel.style.display = show ? 'block' : 'none';
+    btn.textContent = show ? 'Hide Features −' : 'Show Features +';
+  }
 </script>
 
 </body>
