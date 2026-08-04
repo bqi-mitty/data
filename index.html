@@ -312,6 +312,52 @@
     .price-block{ text-align: left; }
   }
 
+  /* ---------- Team ---------- */
+  .team-mission{
+    color: var(--ink-dim);
+    font-size: 15px;
+    max-width: 62ch;
+    margin-bottom: 40px;
+  }
+  .leader-card{
+    background: var(--panel);
+    border: 1px solid var(--panel-line);
+    padding: 34px;
+    display:grid;
+    grid-template-columns: 140px 1fr;
+    gap: 30px;
+    align-items:start;
+  }
+  .leader-photo{
+    width: 140px;
+    height: 140px;
+    border-radius: 6px;
+    object-fit: cover;
+    border: 1px solid var(--panel-line);
+  }
+  .leader-name{
+    font-family: var(--grotesk);
+    font-size: 19px;
+    font-weight: 600;
+  }
+  .leader-title{
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--amber);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin: 6px 0 16px;
+  }
+  .leader-bio{
+    color: var(--ink-dim);
+    font-size: 14.5px;
+    max-width: 56ch;
+  }
+  @media (max-width: 560px){
+    .leader-card{ grid-template-columns: 1fr; }
+    .leader-photo{ width: 100px; height: 100px; }
+  }
+
   /* ---------- Pricing plans ---------- */
   .pricing-note{
     color: var(--ink-dim);
@@ -433,6 +479,7 @@
       <a href="#methodology">Methodology</a>
       <a href="#pricing">Pricing</a>
       <a href="#sample">Sample</a>
+      <a href="#team">Team</a>
       <a href="#contact">Contact</a>
     </nav>
     <a class="btn btn-ghost" href="#sample">View Sample →</a>
@@ -440,7 +487,7 @@
 
   <section class="hero">
     <div class="eyebrow">Structured Market Data</div>
-    <h1>Historical market data, timestamped to when each figure became <em>verifiably available</em> — not backfilled with hindsight.</h1>
+    <h1>Historical data, dated to <em>verifiable availability</em> — not hindsight.</h1>
     <p class="sub">
       We maintain structured price, financial statement, and dividend data for Taiwan, Japan, and US markets.
       Where the underlying disclosure data allows it, metrics that depend on reported figures — like market
@@ -575,6 +622,9 @@
           <span class="field-chip">full history</span>
         </div>
         <a class="btn btn-ghost" href="mailto:bqi.mitty@gmail.com?subject=Custom%20dataset%20inquiry">Contact us →</a>
+        <div style="font-family: var(--mono); font-size: 11.5px; color: var(--ink-dim); margin-top: 10px; user-select: all;">
+          Or email us directly: bqi.mitty@gmail.com
+        </div>
       </div>
     </div>
   </section>
@@ -608,15 +658,40 @@
     </div>
   </section>
 
-  <section id="contact" class="contact-section">
+  <section id="team">
     <div class="section-head">
       <span class="section-num">05</span>
+      <h2>Team</h2>
+    </div>
+    <p class="team-mission">
+      BQI Data is built and maintained by Shaochieh Hu, maintaining structured price, financial statement,
+      and dividend data for Taiwan, Japan, and US markets — with a focus on point-in-time methodology that
+      avoids look-ahead bias.
+    </p>
+    <div class="leader-card">
+      <img class="leader-photo" src="team-leader.jpg" alt="Shaochieh Hu">
+      <div>
+        <div class="leader-name">Shaochieh Hu</div>
+        <div class="leader-title">Founder</div>
+        <p class="leader-bio">
+          Five years building real-time financial data pipelines at Yuanta Securities Investment Trust —
+          integrating Bloomberg, Refinitiv, and ICE feeds, and engineering real-time NAV estimation systems
+          across the firm's ETF lineup. Independently researching and building financial market data
+          pipelines since 2011.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="contact-section">
+    <div class="section-head">
+      <span class="section-num">06</span>
       <h2>Looking for More?</h2>
     </div>
     <div class="contact-box">
       <p>Longer date ranges, additional markets, or additional fields — financial statements, director/supervisor
          holdings, business indicators. Reach out and we'll put together a plan that fits your research.</p>
-      <a class="btn btn-ghost" href="mailto:bqi.mitty@gmail.com">bqi.mitty@gmail.com</a>
+      <a class="btn btn-ghost" href="mailto:bqi.mitty@gmail.com" style="user-select: all;">bqi.mitty@gmail.com</a>
     </div>
     <p style="color: var(--ink-dim); font-size: 12.5px; margin-top: 26px; max-width: 62ch;">
       <strong style="color: var(--ink);">License:</strong> Data is licensed for internal research use only.
@@ -629,6 +704,7 @@
 
   <footer>
     <span>© 2026 BQI Data</span>
+    <span>+886-912-296-321 · No. 12, Aly. 12, Ln. 232, Dafu Rd., Zhuangwei Township, Yilan County 263, Taiwan</span>
     <span>Data provided for research and reference purposes only. Not investment advice.</span>
   </footer>
 
