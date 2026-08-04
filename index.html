@@ -60,6 +60,17 @@
     0%{ transform: translateX(0); }
     100%{ transform: translateX(-50%); }
   }
+  .ticker-note{
+    background: #070C16;
+    border-bottom: 1px solid var(--panel-line);
+    text-align: center;
+    font-family: var(--mono);
+    font-size: 10.5px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--ink-dim);
+    padding: 4px 0 8px;
+  }
 
   /* ---------- Nav ---------- */
   header.site{
@@ -301,6 +312,79 @@
     .price-block{ text-align: left; }
   }
 
+  /* ---------- Pricing plans ---------- */
+  .pricing-note{
+    color: var(--ink-dim);
+    font-size: 14.5px;
+    max-width: 62ch;
+    margin-bottom: 40px;
+  }
+  .pricing-grid{
+    display:grid;
+    grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+    gap: 22px;
+    align-items: stretch;
+  }
+  .plan-card{
+    background: var(--panel);
+    border: 1px solid var(--panel-line);
+    padding: 34px 28px;
+    display:flex;
+    flex-direction: column;
+  }
+  .plan-card.featured{
+    border-color: var(--amber);
+    box-shadow: 0 0 0 1px var(--amber);
+    position: relative;
+  }
+  .plan-tag{
+    font-family: var(--mono);
+    font-size: 11.5px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--green);
+    margin-bottom: 16px;
+  }
+  .plan-card.featured .plan-tag{ color: var(--amber); }
+  .plan-name{
+    font-family: var(--grotesk);
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 10px;
+  }
+  .plan-price{
+    font-family: var(--mono);
+    font-size: 32px;
+    color: var(--amber);
+    font-weight: 600;
+    line-height: 1;
+  }
+  .plan-price .unit{
+    font-size: 13px;
+    color: var(--ink-dim);
+    font-weight: 400;
+    margin-left: 4px;
+  }
+  .plan-desc{
+    color: var(--ink-dim);
+    font-size: 14px;
+    margin: 16px 0 20px;
+  }
+  .plan-fields{
+    display:flex; flex-wrap:wrap; gap:7px;
+    margin-bottom: 26px;
+  }
+  .plan-note{
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--ink-dim);
+    margin-bottom: 20px;
+  }
+  .plan-card .btn{
+    margin-top: auto;
+    text-align: center;
+  }
+
   /* ---------- Contact ---------- */
   .contact-section{ border-bottom: none; }
   .contact-box{
@@ -340,12 +424,14 @@
   <div class="ticker-wrap">
     <div class="ticker" id="tickerTrack"></div>
   </div>
+  <div class="ticker-note">Illustrative data, not live quotes</div>
 
   <header class="site">
     <div class="brand"><span class="dot"></span>BQI DATA</div>
     <nav class="links">
       <a href="#coverage">Coverage</a>
       <a href="#methodology">Methodology</a>
+      <a href="#pricing">Pricing</a>
       <a href="#sample">Sample</a>
       <a href="#contact">Contact</a>
     </nav>
@@ -354,14 +440,15 @@
 
   <section class="hero">
     <div class="eyebrow">Structured Market Data</div>
-    <h1>Historical market data, dated to what was <em>actually knowable</em> at the time.</h1>
+    <h1>Historical market data, timestamped to when each figure became <em>verifiably available</em> — not backfilled with hindsight.</h1>
     <p class="sub">
       We maintain structured price, financial statement, and dividend data for Taiwan, Japan, and US markets.
       Where the underlying disclosure data allows it, metrics that depend on reported figures — like market
       capitalization — are calculated using point-in-time availability rather than retroactively known values.
     </p>
     <div class="hero-cta">
-      <a class="btn btn-primary" href="https://polar.sh/checkout/polar_c_isjc3y4x3x88UP2g5skSQxYvUpdatkLFGKtdn3czgjZ">Get the $0.99 Sample →</a>
+      <a class="btn btn-primary" href="https://buy.polar.sh/polar_cl_d8AuPTNGjWsNW9bB2eQR7nB399hKdhpYwW81X2MbC0f">Get the $0.99 Sample →</a>
+      <a class="btn btn-ghost" href="#pricing">See Subscription Plans</a>
       <span class="hero-note">No account required · Instant delivery</span>
     </div>
   </section>
@@ -402,8 +489,9 @@
       <div class="method-card">
         <div class="idx">/ 01</div>
         <h3>Point-in-time availability</h3>
-        <p>Where disclosure timing is known, market cap and similar derived fields use the share capital figure
-           that was actually available as of each historical date, rather than the figure known today.</p>
+        <p>For tables under active monitoring, timestamps reflect true disclosure timing. Where records
+           required manual reconstruction — for example after a collection gap — timestamps reflect when
+           the figure entered our database instead. Table-level detail is documented for each dataset.</p>
       </div>
       <div class="method-card">
         <div class="idx">/ 02</div>
@@ -418,19 +506,90 @@
            adjusted backward through dividend events.</p>
       </div>
     </div>
+    <p style="color: var(--ink-dim); font-size: 13px; margin-top: 30px; max-width: 62ch;">
+      Structured, cross-referenced, and timestamped through our point-in-time capture pipeline.
+      Data may contain errors, gaps, or delays. Provided as-is, for research and reference purposes.
+    </p>
+  </section>
+
+  <section id="pricing">
+    <div class="section-head">
+      <span class="section-num">03</span>
+      <h2>Daily Subscription Plans</h2>
+    </div>
+    <p class="pricing-note">
+      A daily-updated feed for the full TWSE-listed universe, delivered by email each trading day.
+      Pick the field depth you need — need a specific watchlist, financial statement fields, or a
+      different market entirely? Reach out about a custom plan.
+    </p>
+    <p class="pricing-note" style="font-family: var(--mono); font-size: 12.5px; margin-top: -26px;">
+      Data provided for research and reference purposes only. Not investment advice.
+    </p>
+    <div class="pricing-grid">
+      <div class="plan-card">
+        <div class="plan-tag">Lite</div>
+        <div class="plan-name">Daily OHLCV</div>
+        <div class="plan-price">$14.99<span class="unit">/ month</span></div>
+        <p class="plan-desc">
+          Full TWSE-listed universe, daily open/high/low/close/volume. Built for price-and-volume
+          strategies that don't need fundamentals.
+        </p>
+        <div class="plan-fields">
+          <span class="field-chip">ticker</span>
+          <span class="field-chip">OHLCV</span>
+          <span class="field-chip">daily delivery</span>
+        </div>
+        <div class="plan-note">Sent by email at 19:00 (UTC+8), resent at 07:00 the next morning</div>
+        <a class="btn btn-primary" href="https://buy.polar.sh/polar_cl_NzpEZLD7440VTLMEceWY5a0LLp9TMctIapo192lcgIF">Subscribe →</a>
+      </div>
+      <div class="plan-card featured">
+        <div class="plan-tag">Most popular</div>
+        <div class="plan-name">Standard</div>
+        <div class="plan-price">$34.99<span class="unit">/ month</span></div>
+        <p class="plan-desc">
+          Everything in Lite, plus point-in-time market cap, dividends, and backward-adjusted close —
+          the same fields as our full-market sample dataset, updated daily.
+        </p>
+        <div class="plan-fields">
+          <span class="field-chip">ticker</span>
+          <span class="field-chip">OHLCV</span>
+          <span class="field-chip">market_cap</span>
+          <span class="field-chip">cash_dividend</span>
+          <span class="field-chip">stock_dividend</span>
+          <span class="field-chip">adjusted_close</span>
+        </div>
+        <div class="plan-note">Sent by email at 19:00 (UTC+8), resent at 07:00 the next morning</div>
+        <a class="btn btn-primary" href="https://buy.polar.sh/polar_cl_JEaZ2B9QSpcwsmlSG0X5JTUxqgEZNdW0wUnJj0dwpMJ">Subscribe →</a>
+      </div>
+      <div class="plan-card">
+        <div class="plan-tag">Pro / Custom</div>
+        <div class="plan-name">Tell us what you need</div>
+        <div class="plan-price">Custom</div>
+        <p class="plan-desc">
+          Specific watchlists, financial statement fields, director/supervisor holdings, full historical
+          backfill, or Japan/US coverage — priced to what you actually use.
+        </p>
+        <div class="plan-fields">
+          <span class="field-chip">custom tickers</span>
+          <span class="field-chip">financial statements</span>
+          <span class="field-chip">full history</span>
+        </div>
+        <a class="btn btn-ghost" href="mailto:bqi.mitty@gmail.com?subject=Custom%20dataset%20inquiry">Contact us →</a>
+      </div>
+    </div>
   </section>
 
   <section id="sample">
     <div class="section-head">
-      <span class="section-num">03</span>
+      <span class="section-num">04</span>
       <h2>Try the Sample</h2>
     </div>
     <div class="sample-card">
       <div>
         <div class="tag">Sample Dataset</div>
-        <h3>Taiwan Listed Companies Historical Dataset Sample (2015 Q3)</h3>
+        <h3>Taiwan Listed Companies Historical Dataset Sample (2015 Jun-Aug)</h3>
         <p>TWSE-listed companies in our database, 4-digit tickers, excluding ETFs. Daily frequency,
-           June–September 2015. Meant for reviewing structure and methodology before buying the full dataset.</p>
+           Jun–Aug 2015. Meant for reviewing structure and methodology before buying the full dataset.</p>
         <div class="sample-fields">
           <span class="field-chip">ticker</span>
           <span class="field-chip">OHLCV</span>
@@ -451,7 +610,7 @@
 
   <section id="contact" class="contact-section">
     <div class="section-head">
-      <span class="section-num">04</span>
+      <span class="section-num">05</span>
       <h2>Looking for More?</h2>
     </div>
     <div class="contact-box">
@@ -459,6 +618,13 @@
          holdings, business indicators. Reach out and we'll put together a plan that fits your research.</p>
       <a class="btn btn-ghost" href="mailto:bqi.mitty@gmail.com">bqi.mitty@gmail.com</a>
     </div>
+    <p style="color: var(--ink-dim); font-size: 12.5px; margin-top: 26px; max-width: 62ch;">
+      <strong style="color: var(--ink);">License:</strong> Data is licensed for internal research use only.
+      Redistribution or resale of raw data is prohibited without written permission.
+      <br><br>
+      <strong style="color: var(--ink);">Privacy:</strong> If you contact us by email, we use your message
+      only to respond to your inquiry. We do not sell or share your contact information with third parties.
+    </p>
   </section>
 
   <footer>
