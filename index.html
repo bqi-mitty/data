@@ -552,7 +552,7 @@
     <div class="hero-cta">
       <a class="btn btn-primary" href="https://buy.polar.sh/polar_cl_d8AuPTNGjWsNW9bB2eQR7nB399hKdhpYwW81X2MbC0f">Get the $0.99 Sample →</a>
       <a class="btn btn-ghost" href="#pricing">See Subscription Plans</a>
-      <span class="hero-note">No account required · Instant delivery</span>
+      <span class="hero-note">No account required · Usually delivered immediately</span>
     </div>
   </section>
 
@@ -592,7 +592,7 @@
       <div class="method-card">
         <div class="idx">/ 01</div>
         <h3>Point-in-time availability</h3>
-        <p>For tables under active monitoring, timestamps reflect true disclosure timing. Where records
+        <p>For tables under active monitoring, timestamps are designed to reflect true disclosure timing. Where records
            required manual reconstruction — for example after a collection gap — timestamps reflect when
            the figure entered our database instead. Table-level detail is documented for each dataset.</p>
       </div>
@@ -604,9 +604,11 @@
       </div>
       <div class="method-card">
         <div class="idx">/ 03</div>
-        <h3>Backward-adjusted pricing</h3>
-        <p>Adjusted close prices are anchored to the most recent trading date in each dataset and
-           adjusted backward through dividend events.</p>
+        <h3>Forward-adjusted, stable pricing</h3>
+        <p>Adjusted close is anchored to the earliest trading date in each dataset and carried forward
+           through dividend events. Once published, a historical adjusted close does not get silently
+           rewritten by a later corporate action — return calculations between any two dates are unaffected
+           either way. The raw, unadjusted <code>close_price</code> is always included alongside it.</p>
       </div>
     </div>
     <p style="color: var(--ink-dim); font-size: 13px; margin-top: 30px; max-width: 62ch;">
@@ -621,7 +623,7 @@
       <h2>Daily Subscription Plans</h2>
     </div>
     <p class="pricing-note">
-      A daily-updated feed for the full TWSE-listed universe, delivered by email each trading day.
+      A daily-updated feed covering substantially all TWSE-listed companies, delivered by email each trading day.
       Pick the field depth you need — need a specific watchlist, financial statement fields, or a
       different market entirely? Reach out about a custom plan.
     </p>
@@ -634,7 +636,7 @@
         <div class="plan-name">Daily OHLCV</div>
         <div class="plan-price">$14.99<span class="unit">/ month</span></div>
         <ul class="bullet-list">
-          <li>Full TWSE-listed universe, updated daily</li>
+          <li>Covers substantially all TWSE-listed companies, updated daily</li>
           <li>Built for price-and-volume strategies</li>
           <li>CSV delivery, no integration required</li>
         </ul>
@@ -645,7 +647,7 @@
             <span class="field-chip">OHLCV</span>
             <span class="field-chip">daily delivery</span>
           </div>
-          <div class="plan-note">Delivered by email at 19:00 (UTC+8) daily</div>
+          <div class="plan-note">Typically delivered by email between 18:00–23:00 (UTC+8) daily</div>
         </div>
         <a class="btn btn-primary" href="https://buy.polar.sh/polar_cl_NzpEZLD7440VTLMEceWY5a0LLp9TMctIapo192lcgIF">Subscribe →</a>
       </div>
@@ -668,9 +670,9 @@
             <span class="field-chip">stock_dividend</span>
             <span class="field-chip">adjusted_close</span>
           </div>
-          <div class="plan-note">Delivered by email at 19:00 (UTC+8) daily</div>
+          <div class="plan-note">Typically delivered by email between 18:00–23:00 (UTC+8) daily</div>
         </div>
-        <a class="btn btn-primary" href="https://buy.polar.sh/polar_cl_ZUdSXResp7tCgyniLLDROAGn7pdc2QpnGHP5V2ZVKU6">Subscribe →</a>
+        <a class="btn btn-primary" href="https://buy.polar.sh/polar_cl_JEaZ2B9QSpcwsmlSG0X5JTUxqgEZNdW0wUnJj0dwpMJ">Subscribe →</a>
       </div>
       <div class="plan-card">
         <div class="plan-tag">Pro / Custom</div>
@@ -770,11 +772,15 @@
     </div>
     <div class="faq-item">
       <div class="faq-q">What's the difference between Lite and Standard?</div>
-      <div class="faq-a">Lite includes daily OHLCV only. Standard adds point-in-time market cap, cash and stock dividends, and backward-adjusted close.</div>
+      <div class="faq-a">Lite includes daily OHLCV only. Standard adds point-in-time market cap, cash and stock dividends, and forward-adjusted close.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Why doesn't adjusted_close match today's actual closing price?</div>
+      <div class="faq-a">Our adjusted_close is anchored to the earliest date in your dataset and carried forward through each dividend event, rather than being recalculated backward from today's price. This means the historical value you download today won't be silently rewritten by a future corporate action — useful if you need reproducible backtests. Use close_price for the actual traded price, and adjusted_close for return calculations.</div>
     </div>
     <div class="faq-item">
       <div class="faq-q">How is the data delivered?</div>
-      <div class="faq-a">By email as a CSV file, delivered daily at 19:00 (UTC+8). No API key or integration required.</div>
+      <div class="faq-a">By email as a CSV file, typically delivered daily within an 18:00–23:00 (UTC+8) window. No API key or integration required.</div>
     </div>
     <div class="faq-item">
       <div class="faq-q">Can I cancel my subscription anytime?</div>
