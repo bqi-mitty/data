@@ -504,6 +504,43 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     text-align: center;
   }
 
+  /* ---------- Signup forms (Free / Trial) ---------- */
+  .signup-form{
+    margin-top: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .signup-input{
+    background: var(--bg);
+    border: 1px solid var(--panel-line);
+    color: var(--ink);
+    font-family: var(--body);
+    font-size: 14px;
+    padding: 11px 13px;
+    border-radius: 3px;
+    width: 100%;
+  }
+  .signup-input:focus{
+    outline: none;
+    border-color: var(--amber);
+  }
+  .signup-input::placeholder{ color: var(--ink-dim); }
+  .hp-field{
+    position: absolute;
+    left: -9999px;
+    width: 1px;
+    height: 1px;
+    opacity: 0;
+  }
+  .signup-msg{
+    font-family: var(--mono);
+    font-size: 12px;
+    min-height: 14px;
+  }
+  .signup-msg.success{ color: var(--green); }
+  .signup-msg.error{ color: #C46B5C; }
+
   /* ---------- FAQ ---------- */
   .faq-item{
     border-top: 1px solid var(--panel-line);
@@ -645,14 +682,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <p>When disclosure timing data is missing or inconsistent, we fall back to statutory filing
            deadlines. The full rule set is documented, not hidden.</p>
       </div>
-      <div class="method-card">
-        <div class="idx">/ 03</div>
-        <h3>Forward-adjusted, stable pricing</h3>
-        <p>Adjusted close is anchored to the earliest trading date in each dataset and carried forward
-           through dividend events. Once published, a historical adjusted close does not get silently
-           rewritten by a later corporate action — return calculations between any two dates are unaffected
-           either way. The raw, unadjusted <code>close_price</code> is always included alongside it.</p>
-      </div>
     </div>
     <p style="color: var(--ink-dim); font-size: 13px; margin-top: 30px; max-width: 62ch;">
       Structured, cross-referenced, and timestamped through our point-in-time capture pipeline.
@@ -663,25 +692,25 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <section id="pricing">
     <div class="section-head">
       <span class="section-num">03</span>
-      <h2>Daily Subscription Plans</h2>
+      <h2>Plans</h2>
     </div>
     <p class="pricing-note">
-      A daily-updated feed covering substantially all TWSE-listed companies, delivered by email each trading day.
-      Pick the field depth you need — need a specific watchlist, financial statement fields, or a
-      different market entirely? Reach out about a custom plan.
+      Start free, try the full feed for 90 days, then subscribe when you're ready. Every paid plan is delivered
+      by email each trading day — need a specific watchlist, financial statement fields, or a different market
+      entirely? Reach out about a custom plan.
     </p>
     <p class="pricing-note" style="font-family: var(--mono); font-size: 12.5px; margin-top: -26px;">
       Data provided for research and reference purposes only. Not investment advice.
     </p>
     <div class="pricing-grid">
       <div class="plan-card">
-        <div class="plan-tag">Lite</div>
-        <div class="plan-name">Daily OHLCV</div>
-        <div class="plan-price">$14.99<span class="unit">/ month</span></div>
+        <div class="plan-tag">Free</div>
+        <div class="plan-name">Free Sample Feed</div>
+        <div class="plan-price">$0<span class="unit">no expiration</span></div>
         <ul class="bullet-list">
-          <li>Covers substantially all TWSE-listed companies, updated daily</li>
-          <li>Built for price-and-volume strategies</li>
-          <li>CSV delivery, no integration required</li>
+          <li>10–20 major TWSE-listed companies</li>
+          <li>Daily OHLCV, updated every trading day</li>
+          <li>Email delivery — no card required</li>
         </ul>
         <button class="features-toggle" onclick="toggleFeatures(this)">Show Features +</button>
         <div class="plan-features" style="display:none;">
@@ -690,48 +719,86 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             <span class="field-chip">OHLCV</span>
             <span class="field-chip">daily delivery</span>
           </div>
-          <div class="plan-note">Typically delivered by email between 18:00–23:00 (UTC+8) daily</div>
         </div>
-        <a class="btn btn-primary" href="https://buy.polar.sh/polar_cl_NzpEZLD7440VTLMEceWY5a0LLp9TMctIapo192lcgIF">Subscribe →</a>
+        <form class="signup-form" data-plan="free" onsubmit="return handleSignup(event)">
+          <input type="email" class="signup-input" name="email" placeholder="you@email.com" required>
+          <input type="text" name="website" class="hp-field" tabindex="-1" autocomplete="off" aria-hidden="true">
+          <button type="submit" class="btn btn-primary">Get Free Access →</button>
+          <div class="signup-msg" role="status"></div>
+        </form>
       </div>
-      <div class="plan-card featured">
-        <div class="plan-tag">Most popular</div>
-        <div class="plan-name">Standard</div>
-        <div class="plan-price">$34.99<span class="unit">/ month</span></div>
+      <div class="plan-card">
+        <div class="plan-tag" style="color: var(--green);">3-Month Trial</div>
+        <div class="plan-name">Full Access Trial</div>
+        <div class="plan-price">$0<span class="unit">for 90 days</span></div>
         <ul class="bullet-list">
-          <li>Everything in Lite</li>
-          <li>Adds point-in-time market cap, dividends, and adjusted close</li>
-          <li>Same fields as our full-market sample dataset</li>
+          <li>Full TWSE-listed market coverage</li>
+          <li>Balance sheet &amp; income statement, dividends, stock splits</li>
+          <li>Point-in-time methodology, daily updates</li>
+          <li>Corrected data re-sent automatically when source figures are revised</li>
         </ul>
         <button class="features-toggle" onclick="toggleFeatures(this)">Show Features +</button>
         <div class="plan-features" style="display:none;">
           <div class="plan-fields">
             <span class="field-chip">ticker</span>
             <span class="field-chip">OHLCV</span>
-            <span class="field-chip">market_cap</span>
+            <span class="field-chip">balance_sheet</span>
+            <span class="field-chip">income_statement</span>
             <span class="field-chip">cash_dividend</span>
             <span class="field-chip">stock_dividend</span>
-            <span class="field-chip">adjusted_close</span>
+            <span class="field-chip">stock_split</span>
+            <span class="field-chip">point-in-time</span>
           </div>
-          <div class="plan-note">Typically delivered by email between 18:00–23:00 (UTC+8) daily</div>
+          <div class="plan-note">Trial runs 90 days from signup. No historical dataset included. One trial per email address. Cash flow statement not yet available. If a previously delivered figure is later revised at the source, we re-send corrected data within a limited window: same trading day for closing price corrections, within 30 days of original delivery for dividend and stock-split corrections, and within the same fiscal quarter for balance sheet and income statement corrections. Corrections outside these windows are not automatically re-sent.</div>
         </div>
-        <a class="btn btn-primary" href="https://buy.polar.sh/polar_cl_JEaZ2B9QSpcwsmlSG0X5JTUxqgEZNdW0wUnJj0dwpMJ">Subscribe →</a>
+        <form class="signup-form" data-plan="trial" onsubmit="return handleSignup(event)">
+          <input type="email" class="signup-input" name="email" placeholder="you@email.com" required>
+          <input type="text" name="website" class="hp-field" tabindex="-1" autocomplete="off" aria-hidden="true">
+          <button type="submit" class="btn btn-primary">Start Free Trial →</button>
+          <div class="signup-msg" role="status"></div>
+        </form>
       </div>
-      <div class="plan-card">
-        <div class="plan-tag">Pro / Custom</div>
-        <div class="plan-name">Tell us what you need</div>
-        <div class="plan-price">Custom</div>
+      <div class="plan-card featured">
+        <div class="plan-tag">Most popular</div>
+        <div class="plan-name">Paid Subscription</div>
+        <div class="plan-price">$19.99<span class="unit">/ month</span></div>
         <ul class="bullet-list">
-          <li>Specific watchlists or tickers</li>
-          <li>Financial statement fields, director/supervisor holdings</li>
-          <li>Full historical backfill or Japan/US coverage</li>
+          <li>Everything in the Trial, with no 90-day limit</li>
+          <li>Balance sheet &amp; income statement, dividends, stock splits</li>
+          <li>Corrected data re-sent automatically when source figures are revised</li>
+          <li>Cancel anytime — data already delivered is yours to keep</li>
         </ul>
         <button class="features-toggle" onclick="toggleFeatures(this)">Show Features +</button>
         <div class="plan-features" style="display:none;">
           <div class="plan-fields">
+            <span class="field-chip">ticker</span>
+            <span class="field-chip">OHLCV</span>
+            <span class="field-chip">balance_sheet</span>
+            <span class="field-chip">income_statement</span>
+            <span class="field-chip">cash_dividend</span>
+            <span class="field-chip">stock_dividend</span>
+            <span class="field-chip">stock_split</span>
+            <span class="field-chip">point-in-time</span>
+          </div>
+          <div class="plan-note">Typically delivered by email between 18:00–23:00 (UTC+8) daily. Cash flow statement not yet available. If a previously delivered figure is later revised at the source, we re-send corrected data within a limited window: same trading day for closing price corrections, within 30 days of original delivery for dividend and stock-split corrections, and within the same fiscal quarter for balance sheet and income statement corrections. Corrections outside these windows are not automatically re-sent.</div>
+        </div>
+        <a class="btn btn-primary" href="https://buy.polar.sh/polar_cl_K4RJvEWIat1No9M6m0uWcTUt2DRvVkvkWrfpC00LbLq">Subscribe →</a>
+      </div>
+      <div class="plan-card">
+        <div class="plan-tag">Extended / Custom</div>
+        <div class="plan-name">Tell us what you need</div>
+        <div class="plan-price">Custom</div>
+        <ul class="bullet-list">
+          <li>Historical data back to 2000</li>
+          <li>Specific watchlists, tickers, or director/supervisor holdings</li>
+          <li>Japan / US market coverage or other bespoke requirements</li>
+        </ul>
+        <button class="features-toggle" onclick="toggleFeatures(this)">Show Features +</button>
+        <div class="plan-features" style="display:none;">
+          <div class="plan-fields">
+            <span class="field-chip">2000–2026 history</span>
             <span class="field-chip">custom tickers</span>
-            <span class="field-chip">financial statements</span>
-            <span class="field-chip">full history</span>
+            <span class="field-chip">other markets</span>
           </div>
         </div>
         <a class="btn btn-ghost" href="mailto:bqi.mitty@gmail.com?subject=Custom%20dataset%20inquiry">Contact us →</a>
@@ -766,6 +833,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             <span class="field-chip">stock_dividend</span>
             <span class="field-chip">adjusted_close</span>
           </div>
+          <div class="plan-note">adjusted_close is anchored to the most recent trading day in this sample — a later dividend or stock split would revise earlier historical values to keep that anchor. close_price is the actual traded price and never changes once published.</div>
         </div>
       </div>
       <div class="price-block">
@@ -814,12 +882,16 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <div class="faq-a">Taiwan (TWSE), with additional Japan and US datasets available. See the Market Coverage section above for exact date ranges per data type.</div>
     </div>
     <div class="faq-item">
-      <div class="faq-q">What's the difference between Lite and Standard?</div>
-      <div class="faq-a">Lite includes daily OHLCV only. Standard adds point-in-time market cap, cash and stock dividends, and forward-adjusted close.</div>
+      <div class="faq-q">What's the difference between Free, the Trial, and the Paid Subscription?</div>
+      <div class="faq-a">Free gives you daily OHLCV for a small set of major TWSE-listed companies, with no expiration, at no cost. The 3-Month Trial unlocks the full TWSE-listed market — balance sheet and income statement, dividends, stock splits, and point-in-time methodology — for 90 days, but without a historical dataset. Cash flow statement data is not yet available on any plan. The Paid Subscription includes everything in the Trial on an ongoing basis — with no 90-day cutoff — so delivery continues for as long as you're subscribed.</div>
     </div>
     <div class="faq-item">
-      <div class="faq-q">Why doesn't adjusted_close match today's actual closing price?</div>
-      <div class="faq-a">Our adjusted_close is anchored to the earliest date in your dataset and carried forward through each dividend event, rather than being recalculated backward from today's price. This means the historical value you download today won't be silently rewritten by a future corporate action — useful if you need reproducible backtests. Use close_price for the actual traded price, and adjusted_close for return calculations.</div>
+      <div class="faq-q">Do I need a credit card for the Free plan or the Trial?</div>
+      <div class="faq-a">No. Both Free and the 3-Month Trial only require an email address. Card details are only needed if you subscribe to a paid plan.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">What happens when my trial ends?</div>
+      <div class="faq-a">Delivery simply stops after 90 days — you won't be automatically charged. If you'd like to keep receiving data, subscribe to the Paid plan whenever you're ready. Each email address is eligible for one trial.</div>
     </div>
     <div class="faq-item">
       <div class="faq-q">How is the data delivered?</div>
@@ -827,7 +899,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
     <div class="faq-item">
       <div class="faq-q">Can I cancel my subscription anytime?</div>
-      <div class="faq-a">Yes, subscriptions can be cancelled anytime through your Polar customer portal, effective at the end of the current billing period.</div>
+      <div class="faq-a">Yes, subscriptions can be cancelled anytime through your Polar customer portal, effective at the end of the current billing period. Any data already delivered to you is yours to keep; cancelling only stops future deliveries.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">What if a data point I already received turns out to be wrong or gets revised?</div>
+      <div class="faq-a">For the Trial and Paid Subscription, corrected data is re-sent automatically when source figures are revised — same trading day for closing prices, within 30 days of original delivery for dividends and stock splits, and within the same fiscal quarter for balance sheet and income statement items. Outside those windows, or if you spot something that looks wrong, email us at bqi.mitty@gmail.com with the ticker and date and we'll investigate.</div>
     </div>
     <div class="faq-item">
       <div class="faq-q">Can I resell or redistribute the data?</div>
@@ -838,12 +914,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <div class="faq-a">No. Data is provided for research and reference purposes only.</div>
     </div>
     <div class="faq-item">
-      <div class="faq-q">What if I find an error in the data?</div>
-      <div class="faq-a">Email us at bqi.mitty@gmail.com with the ticker and date — we investigate and correct verified issues.</div>
-    </div>
-    <div class="faq-item">
       <div class="faq-q">Do you offer custom datasets (different markets, fields, or history)?</div>
-      <div class="faq-a">Yes — see the Pro/Custom plan, or email us directly to discuss your needs.</div>
+      <div class="faq-a">Yes — see the Extended / Custom plan, or email us directly to discuss your needs.</div>
     </div>
   </section>
 
@@ -892,6 +964,58 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     const show = panel.style.display === 'none';
     panel.style.display = show ? 'block' : 'none';
     btn.textContent = show ? 'Hide Features −' : 'Show Features +';
+  }
+
+  // Free / Trial signup — posts to the BQI Data signup worker
+  const SIGNUP_ENDPOINT = 'https://bqi-signup-worker.bqi-mitty.workers.dev/signup';
+
+  async function handleSignup(event){
+    event.preventDefault();
+    const form = event.target;
+    const plan = form.dataset.plan; // "free" or "trial"
+    const email = form.email.value.trim();
+    const website = form.website.value; // honeypot — should always be empty
+    const btn = form.querySelector('button[type="submit"]');
+    const msgEl = form.querySelector('.signup-msg');
+    const originalLabel = btn.textContent;
+
+    msgEl.textContent = '';
+    msgEl.className = 'signup-msg';
+    btn.disabled = true;
+    btn.textContent = 'Sending...';
+
+    try {
+      const res = await fetch(SIGNUP_ENDPOINT, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, planType: plan, website })
+      });
+      const data = await res.json();
+
+      if (data.success) {
+        msgEl.textContent = "Thanks — we've received your request. You'll hear from us by email once it's set up.";
+        msgEl.className = 'signup-msg success';
+        form.reset();
+      } else {
+        const messages = {
+          invalid_email: 'Please enter a valid email address.',
+          already_submitted: 'This email has already signed up recently.',
+          trial_already_used: 'This email has already used its trial — one trial per email address.',
+          rate_limited: 'Too many requests — please try again later.',
+          invalid_plan_type: 'Something went wrong. Please refresh and try again.'
+        };
+        msgEl.textContent = messages[data.error] || 'Something went wrong. Please try again.';
+        msgEl.className = 'signup-msg error';
+      }
+    } catch (err) {
+      msgEl.textContent = 'Network error — please try again in a moment.';
+      msgEl.className = 'signup-msg error';
+    } finally {
+      btn.disabled = false;
+      btn.textContent = originalLabel;
+    }
+
+    return false;
   }
 </script>
 
