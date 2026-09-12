@@ -22,7 +22,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title id="pageTitle">BQI Data — Point-in-Time Market Data for Taiwan, Japan & US</title>
-<meta name="description" content="Point-in-time structured market data for Taiwan, Japan, and US markets. Built for quantitative researchers who need backtests that don't cheat.">
+<meta name="description" content="Point-in-time structured market data for Taiwan, Japan, and US markets, designed for research and historical analysis.">
 
 <!-- Open Graph -->
 <meta property="og:type" content="website">
@@ -645,16 +645,16 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
   <section class="hero">
     <div class="eyebrow" data-i18n="hero_eyebrow">Structured Market Data</div>
-    <h1 data-i18n-html="hero_h1">Historical data, dated to <em>verifiable availability</em> — not hindsight.</h1>
+    <h1 data-i18n-html="hero_h1">Historical data organized around <em>when information became available</em>.</h1>
     <p class="sub" data-i18n="hero_sub">
       We maintain structured price, financial statement, and dividend data for Taiwan, Japan, and US markets.
-      Where the underlying disclosure data allows it, metrics that depend on reported figures — like market
-      capitalization — are calculated using point-in-time availability rather than retroactively known values.
+      Where disclosure timing can be identified, time-dependent metrics such as market capitalization are
+      calculated using information available at that time rather than later-known values.
     </p>
     <div class="hero-cta">
       <a class="btn btn-primary" href="https://buy.polar.sh/polar_cl_d8AuPTNGjWsNW9bB2eQR7nB399hKdhpYwW81X2MbC0f" data-i18n="hero_cta1">Get the $0.99 Sample →</a>
       <a class="btn btn-ghost" href="#pricing" data-i18n="hero_cta2">See Subscription Plans</a>
-      <span class="hero-note" data-i18n="hero_note">No account required · Usually delivered immediately</span>
+      <span class="hero-note" data-i18n="hero_note">No account required · Delivery is normally automated after purchase</span>
     </div>
   </section>
 
@@ -693,16 +693,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <div class="method-grid">
       <div class="method-card">
         <div class="idx">/ 01</div>
-        <h3 data-i18n="method1_title">Point-in-time availability</h3>
-        <p data-i18n="method1_p">For tables under active monitoring, timestamps are designed to reflect true disclosure timing. Where records
-           required manual reconstruction — for example after a collection gap — timestamps reflect when
-           the figure entered our database instead. Table-level detail is documented for each dataset.</p>
+        <h3 data-i18n="method1_title">Availability-based dating</h3>
+        <p data-i18n="method1_p">For tables under active monitoring, timestamps are intended to reflect when the source information became available. If a record had to be reconstructed later — for example after a collection gap — the timestamp may instead reflect when the figure entered our database. The dating approach is documented by dataset.</p>
       </div>
       <div class="method-card">
         <div class="idx">/ 02</div>
-        <h3 data-i18n="method2_title">Documented fallback logic</h3>
-        <p data-i18n="method2_p">When disclosure timing data is missing or inconsistent, we fall back to statutory filing
-           deadlines. The full rule set is documented, not hidden.</p>
+        <h3 data-i18n="method2_title">Fallback rules when timing is unavailable</h3>
+        <p data-i18n="method2_p">When disclosure timing is missing or inconsistent, we may use statutory filing deadlines as a fallback. The applicable rule is documented for the dataset.</p>
       </div>
     </div>
     <p style="color: var(--ink-dim); font-size: 13px; margin-top: 30px; max-width: 62ch;" data-i18n="method_footnote">
@@ -717,9 +714,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <h2 data-i18n="sec03_title">Plans</h2>
     </div>
     <p class="pricing-note" data-i18n="pricing_note1">
-      Start free, try the full feed for 90 days, then subscribe when you're ready. Every paid plan is delivered
-      by email each trading day — need a specific watchlist, financial statement fields, or a different market
-      entirely? Reach out about a custom plan.
+      Start with the free feed, try the broader Taiwan feed for 90 days, or choose a paid subscription for ongoing delivery.
+      If you need specific tickers, fields, longer history, or another market, contact us to discuss a custom dataset.
     </p>
     <p class="pricing-note" style="font-family: var(--mono); font-size: 12.5px; margin-top: -26px;" data-i18n="pricing_note2">
       Data provided for research and reference purposes only. Not investment advice.
@@ -728,7 +724,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <div class="plan-card">
         <div class="plan-tag" data-i18n="plan_free_tag">Free</div>
         <div class="plan-name" data-i18n="plan_free_name">Free Sample Feed</div>
-        <div class="plan-price">$0<span class="unit" data-i18n="plan_free_unit">no expiration</span></div>
+        <div class="plan-price">$0<span class="unit" data-i18n="plan_free_unit">ongoing feed</span></div>
         <ul class="bullet-list">
           <li data-i18n="plan_free_b1">10–20 major TWSE-listed companies</li>
           <li data-i18n="plan_free_b2">Daily OHLCV, updated every trading day</li>
@@ -751,13 +747,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </div>
       <div class="plan-card">
         <div class="plan-tag" style="color: var(--green);" data-i18n="plan_trial_tag">3-Month Trial</div>
-        <div class="plan-name" data-i18n="plan_trial_name">Full Access Trial</div>
+        <div class="plan-name" data-i18n="plan_trial_name">90-Day Trial</div>
         <div class="plan-price">$0<span class="unit" data-i18n="plan_trial_unit">for 90 days</span></div>
         <ul class="bullet-list">
-          <li data-i18n="plan_trial_b1">Full TWSE-listed market coverage</li>
+          <li data-i18n="plan_trial_b1">TWSE-listed market coverage included in the trial</li>
           <li data-i18n-html="plan_trial_b2">Balance sheet &amp; income statement, dividends, stock splits</li>
-          <li data-i18n="plan_trial_b3">Point-in-time methodology, daily updates</li>
-          <li data-i18n="plan_trial_b4">Corrected data re-sent automatically when source figures are revised</li>
+          <li data-i18n="plan_trial_b3">Point-in-time dating methodology and trading-day updates</li>
+          <li data-i18n="plan_trial_b4">Eligible corrections re-sent when source figures are revised</li>
         </ul>
         <button class="features-toggle" data-i18n="show_features" onclick="toggleFeatures(this)">Show Features +</button>
         <div class="plan-features" style="display:none;">
@@ -781,14 +777,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </form>
       </div>
       <div class="plan-card featured">
-        <div class="plan-tag" data-i18n="plan_sub_tag">Most popular</div>
+        <div class="plan-tag" data-i18n="plan_sub_tag">Monthly</div>
         <div class="plan-name" data-i18n="plan_sub_name">Paid Subscription</div>
         <div class="plan-price">$19.99<span class="unit" data-i18n="plan_sub_unit">/ month</span></div>
         <ul class="bullet-list">
-          <li data-i18n="plan_sub_b1">Everything in the Trial, with no 90-day limit</li>
+          <li data-i18n="plan_sub_b1">Trial features with ongoing delivery while subscribed</li>
           <li data-i18n-html="plan_sub_b2">Balance sheet &amp; income statement, dividends, stock splits</li>
-          <li data-i18n="plan_sub_b3">Corrected data re-sent automatically when source figures are revised</li>
-          <li data-i18n="plan_sub_b4">Cancel anytime — data already delivered is yours to keep</li>
+          <li data-i18n="plan_sub_b3">Eligible corrections re-sent when source figures are revised</li>
+          <li data-i18n="plan_sub_b4">Cancel through Polar; previously delivered data remains available under the license</li>
         </ul>
         <button class="features-toggle" data-i18n="show_features" onclick="toggleFeatures(this)">Show Features +</button>
         <div class="plan-features" style="display:none;">
@@ -811,9 +807,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <div class="plan-name" data-i18n="plan_custom_name">Tell us what you need</div>
         <div class="plan-price" data-i18n="plan_custom_price">Custom</div>
         <ul class="bullet-list">
-          <li data-i18n="plan_custom_b1">Historical data back to 2000</li>
+          <li data-i18n="plan_custom_b1">Historical data ranges available from 2000 for selected datasets</li>
           <li data-i18n="plan_custom_b2">Specific watchlists, tickers, or director/supervisor holdings</li>
-          <li data-i18n="plan_custom_b3">Japan / US market coverage or other bespoke requirements</li>
+          <li data-i18n="plan_custom_b3">Japan / US datasets and other custom requirements</li>
         </ul>
         <button class="features-toggle" data-i18n="show_features" onclick="toggleFeatures(this)">Show Features +</button>
         <div class="plan-features" style="display:none;">
@@ -843,7 +839,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <ul class="bullet-list" style="margin-top:14px;">
           <li data-i18n="sample_b1">Preview our data structure and methodology</li>
           <li data-i18n="sample_b2">TWSE-listed companies, Jun–Aug 2015</li>
-          <li data-i18n="sample_b3">One-time purchase, instant download</li>
+          <li data-i18n="sample_b3">One-time purchase; download is provided after checkout</li>
         </ul>
         <button class="features-toggle" data-i18n="show_features" onclick="toggleFeatures(this)">Show Features +</button>
         <div class="plan-features" style="display:none;">
@@ -855,7 +851,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             <span class="field-chip">stock_dividend</span>
             <span class="field-chip">adjusted_close</span>
           </div>
-          <div class="plan-note" data-i18n="sample_note">adjusted_close is anchored to the most recent trading day in this sample — a later dividend or stock split would revise earlier historical values to keep that anchor. close_price is the actual traded price and never changes once published.</div>
+          <div class="plan-note" data-i18n="sample_note">adjusted_close is anchored to the most recent trading day in this sample, so later corporate actions may change earlier adjusted values. close_price represents the reported closing price for that date; source corrections, if any, may be reflected separately.</div>
         </div>
       </div>
       <div class="price-block">
@@ -873,9 +869,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <h2 data-i18n="sec05_title">Team</h2>
     </div>
     <p class="team-mission" data-i18n="team_mission">
-      BQI Data is built and maintained by Shaochieh Hu, maintaining structured price, financial statement,
-      and dividend data for Taiwan, Japan, and US markets — with a focus on point-in-time methodology that
-      avoids look-ahead bias.
+      BQI Data is built and maintained by Shaochieh Hu and focuses on structured price, financial statement,
+      and dividend data for Taiwan, Japan, and US markets, with dating methods designed to reduce look-ahead bias
+      in historical research.
     </p>
     <div class="leader-card">
       <img class="leader-photo" src="team-leader.jpg" alt="Shaochieh Hu">
@@ -897,7 +893,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
     <div class="faq-item">
       <div class="faq-q" data-i18n="faq_q1">What is point-in-time data, and why does it matter?</div>
-      <div class="faq-a" data-i18n="faq_a1">Point-in-time data reflects only the information that was actually available as of each historical date — for example, market cap is calculated using the share capital figure known at that time, not the figure known today. This avoids look-ahead bias in backtests.</div>
+      <div class="faq-a" data-i18n="faq_a1">Point-in-time data aims to use the information that was available as of each historical date. For example, market capitalization can be calculated using the share-capital figure available at that time rather than a later value. This helps reduce look-ahead bias in backtests.</div>
     </div>
     <div class="faq-item">
       <div class="faq-q" data-i18n="faq_q2">What markets and time ranges do you cover?</div>
@@ -905,7 +901,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
     <div class="faq-item">
       <div class="faq-q" data-i18n="faq_q3">What's the difference between Free, the Trial, and the Paid Subscription?</div>
-      <div class="faq-a" data-i18n="faq_a3">Free gives you daily OHLCV for a small set of major TWSE-listed companies, with no expiration, at no cost. The 3-Month Trial unlocks the full TWSE-listed market — balance sheet and income statement, dividends, stock splits, and point-in-time methodology — for 90 days, but without a historical dataset. Cash flow statement data is not yet available on any plan. The Paid Subscription includes everything in the Trial on an ongoing basis — with no 90-day cutoff — so delivery continues for as long as you're subscribed.</div>
+      <div class="faq-a" data-i18n="faq_a3">Free provides daily OHLCV for a small set of major TWSE-listed companies. The 3-Month Trial adds broader TWSE-listed coverage, including balance sheet and income statement data, dividends, stock splits, and point-in-time dating for 90 days, but does not include a historical dataset. Cash flow statement data is not currently included. The Paid Subscription continues the same feed while your subscription remains active.</div>
     </div>
     <div class="faq-item">
       <div class="faq-q" data-i18n="faq_q4">Do I need a credit card for the Free plan or the Trial?</div>
@@ -917,7 +913,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
     <div class="faq-item">
       <div class="faq-q" data-i18n="faq_q6">How is the data delivered?</div>
-      <div class="faq-a" data-i18n="faq_a6">By email as a CSV file, typically delivered daily within an 18:00–23:00 (UTC+8) window. No API key or integration required.</div>
+      <div class="faq-a" data-i18n="faq_a6">By email as CSV files, typically within an 18:00–23:00 (UTC+8) delivery window on applicable trading days. No API key or system integration is required.</div>
     </div>
     <div class="faq-item">
       <div class="faq-q" data-i18n="faq_q7">Can I cancel my subscription anytime?</div>
@@ -937,7 +933,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
     <div class="faq-item">
       <div class="faq-q" data-i18n="faq_q11">Do you offer custom datasets (different markets, fields, or history)?</div>
-      <div class="faq-a" data-i18n="faq_a11">Yes — see the Extended / Custom plan, or email us directly to discuss your needs.</div>
+      <div class="faq-a" data-i18n="faq_a11">Custom datasets may be available depending on the requested market, fields, and history. See the Extended / Custom plan or email us to discuss your requirements.</div>
     </div>
   </section>
 
@@ -1051,11 +1047,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       nav_viewsample: "View Sample →",
       ticker_note: "Illustrative data, not live quotes",
       hero_eyebrow: "Structured Market Data",
-      hero_h1: 'Historical data, dated to <em>verifiable availability</em> — not hindsight.',
-      hero_sub: "We maintain structured price, financial statement, and dividend data for Taiwan, Japan, and US markets. Where the underlying disclosure data allows it, metrics that depend on reported figures — like market capitalization — are calculated using point-in-time availability rather than retroactively known values.",
+      hero_h1: 'Historical data organized around <em>when information became available</em>.',
+      hero_sub: "We maintain structured price, financial statement, and dividend data for Taiwan, Japan, and US markets. Where disclosure timing can be identified, time-dependent metrics such as market capitalization are calculated using information available at that time rather than later-known values.",
       hero_cta1: "Get the $0.99 Sample →",
       hero_cta2: "See Subscription Plans",
-      hero_note: "No account required · Usually delivered immediately",
+      hero_note: "No account required · Delivery is normally automated after purchase",
       sec01_title: "Market Coverage",
       cov_tw: "Taiwan", cov_jp: "Japan", cov_us: "United States",
       cov_tw_r1: "Stock price data", cov_tw_r1y: "since 1992",
@@ -1068,38 +1064,38 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       cov_us_r1: "Stock price data", cov_us_r1y: "since 1993",
       cov_us_r2: "Financial statements", cov_us_r2y: "since 2009",
       sec02_title: "How the Data Is Dated",
-      method1_title: "Point-in-time availability",
-      method1_p: "For tables under active monitoring, timestamps are designed to reflect true disclosure timing. Where records required manual reconstruction — for example after a collection gap — timestamps reflect when the figure entered our database instead. Table-level detail is documented for each dataset.",
-      method2_title: "Documented fallback logic",
-      method2_p: "When disclosure timing data is missing or inconsistent, we fall back to statutory filing deadlines. The full rule set is documented, not hidden.",
+      method1_title: "Availability-based dating",
+      method1_p: "For tables under active monitoring, timestamps are intended to reflect when the source information became available. If a record had to be reconstructed later — for example after a collection gap — the timestamp may instead reflect when the figure entered our database. The dating approach is documented by dataset.",
+      method2_title: "Fallback rules when timing is unavailable",
+      method2_p: "When disclosure timing is missing or inconsistent, we may use statutory filing deadlines as a fallback. The applicable rule is documented for the dataset.",
       method_footnote: "Structured, cross-referenced, and timestamped through our point-in-time capture pipeline. Data may contain errors, gaps, or delays. Provided as-is, for research and reference purposes.",
       sec03_title: "Plans",
-      pricing_note1: "Start free, try the full feed for 90 days, then subscribe when you're ready. Every paid plan is delivered by email each trading day — need a specific watchlist, financial statement fields, or a different market entirely? Reach out about a custom plan.",
+      pricing_note1: "Start with the free feed, try the broader Taiwan feed for 90 days, or choose a paid subscription for ongoing delivery. If you need specific tickers, fields, longer history, or another market, contact us to discuss a custom dataset.",
       pricing_note2: "Data provided for research and reference purposes only. Not investment advice.",
       show_features: "Show Features +", hide_features: "Hide Features −",
-      plan_free_tag: "Free", plan_free_name: "Free Sample Feed", plan_free_unit: "no expiration",
+      plan_free_tag: "Free", plan_free_name: "Free Sample Feed", plan_free_unit: "ongoing feed",
       plan_free_b1: "10–20 major TWSE-listed companies",
       plan_free_b2: "Daily OHLCV, updated every trading day",
       plan_free_b3: "Email delivery — no card required",
       plan_free_btn: "Get Free Access →",
-      plan_trial_tag: "3-Month Trial", plan_trial_name: "Full Access Trial", plan_trial_unit: "for 90 days",
-      plan_trial_b1: "Full TWSE-listed market coverage",
+      plan_trial_tag: "3-Month Trial", plan_trial_name: "90-Day Trial", plan_trial_unit: "for 90 days",
+      plan_trial_b1: "TWSE-listed market coverage included in the trial",
       plan_trial_b2: "Balance sheet &amp; income statement, dividends, stock splits",
-      plan_trial_b3: "Point-in-time methodology, daily updates",
-      plan_trial_b4: "Corrected data re-sent automatically when source figures are revised",
+      plan_trial_b3: "Point-in-time dating methodology and trading-day updates",
+      plan_trial_b4: "Eligible corrections re-sent when source figures are revised",
       plan_trial_note: "Trial runs 90 days from signup. No historical dataset included. One trial per email address. Cash flow statement not yet available. If a previously delivered figure is later revised at the source, we re-send corrected data within a limited window: same trading day for closing price corrections, within 30 days of original delivery for dividend and stock-split corrections, and within the same fiscal quarter for balance sheet and income statement corrections. Corrections outside these windows are not automatically re-sent.",
       plan_trial_btn: "Start Free Trial →",
-      plan_sub_tag: "Most popular", plan_sub_name: "Paid Subscription", plan_sub_unit: "/ month",
-      plan_sub_b1: "Everything in the Trial, with no 90-day limit",
+      plan_sub_tag: "Monthly", plan_sub_name: "Paid Subscription", plan_sub_unit: "/ month",
+      plan_sub_b1: "Trial features with ongoing delivery while subscribed",
       plan_sub_b2: "Balance sheet &amp; income statement, dividends, stock splits",
-      plan_sub_b3: "Corrected data re-sent automatically when source figures are revised",
-      plan_sub_b4: "Cancel anytime — data already delivered is yours to keep",
+      plan_sub_b3: "Eligible corrections re-sent when source figures are revised",
+      plan_sub_b4: "Cancel through Polar; previously delivered data remains available under the license",
       plan_sub_note: "Typically delivered by email between 18:00–23:00 (UTC+8) daily. Cash flow statement not yet available. If a previously delivered figure is later revised at the source, we re-send corrected data within a limited window: same trading day for closing price corrections, within 30 days of original delivery for dividend and stock-split corrections, and within the same fiscal quarter for balance sheet and income statement corrections. Corrections outside these windows are not automatically re-sent.",
       plan_sub_btn: "Subscribe →",
       plan_custom_tag: "Extended / Custom", plan_custom_name: "Tell us what you need", plan_custom_price: "Custom",
-      plan_custom_b1: "Historical data back to 2000",
+      plan_custom_b1: "Historical data ranges available from 2000 for selected datasets",
       plan_custom_b2: "Specific watchlists, tickers, or director/supervisor holdings",
-      plan_custom_b3: "Japan / US market coverage or other bespoke requirements",
+      plan_custom_b3: "Japan / US datasets and other custom requirements",
       plan_custom_chip1: "2000–2026 history", plan_custom_chip2: "custom tickers", plan_custom_chip3: "other markets",
       plan_custom_btn: "Contact us →",
       plan_custom_email_prefix: "Or email us directly:",
@@ -1108,28 +1104,28 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       sample_h3: "Taiwan Listed Companies Historical Dataset Sample (2015 Jun-Aug)",
       sample_b1: "Preview our data structure and methodology",
       sample_b2: "TWSE-listed companies, Jun–Aug 2015",
-      sample_b3: "One-time purchase, instant download",
-      sample_note: "adjusted_close is anchored to the most recent trading day in this sample — a later dividend or stock split would revise earlier historical values to keep that anchor. close_price is the actual traded price and never changes once published.",
+      sample_b3: "One-time purchase; download is provided after checkout",
+      sample_note: "adjusted_close is anchored to the most recent trading day in this sample, so later corporate actions may change earlier adjusted values. close_price represents the reported closing price for that date; source corrections, if any, may be reflected separately.",
       sample_onetime: "one-time",
       sample_buy_btn: "Buy Sample →",
       sec05_title: "Team",
-      team_mission: "BQI Data is built and maintained by Shaochieh Hu, maintaining structured price, financial statement, and dividend data for Taiwan, Japan, and US markets — with a focus on point-in-time methodology that avoids look-ahead bias.",
+      team_mission: "BQI Data is built and maintained by Shaochieh Hu and focuses on structured price, financial statement, and dividend data for Taiwan, Japan, and US markets, with dating methods designed to reduce look-ahead bias in historical research.",
       leader_b1: "Building BQI Data — structured, point-in-time financial market data for Taiwan, Japan, and US markets",
       leader_b2: "Built and maintained real-time financial data pipelines at Yuanta Securities Investment Trust, engineering NAV estimation systems across the firm's ETF lineup",
       leader_b3: "Experienced integrating Bloomberg, Refinitiv, and ICE data feeds",
       sec06_title: "FAQ",
       faq_q1: "What is point-in-time data, and why does it matter?",
-      faq_a1: "Point-in-time data reflects only the information that was actually available as of each historical date — for example, market cap is calculated using the share capital figure known at that time, not the figure known today. This avoids look-ahead bias in backtests.",
+      faq_a1: "Point-in-time data aims to use the information that was available as of each historical date. For example, market capitalization can be calculated using the share-capital figure available at that time rather than a later value. This helps reduce look-ahead bias in backtests.",
       faq_q2: "What markets and time ranges do you cover?",
       faq_a2: "Taiwan (TWSE), with additional Japan and US datasets available. See the Market Coverage section above for exact date ranges per data type.",
       faq_q3: "What's the difference between Free, the Trial, and the Paid Subscription?",
-      faq_a3: "Free gives you daily OHLCV for a small set of major TWSE-listed companies, with no expiration, at no cost. The 3-Month Trial unlocks the full TWSE-listed market — balance sheet and income statement, dividends, stock splits, and point-in-time methodology — for 90 days, but without a historical dataset. Cash flow statement data is not yet available on any plan. The Paid Subscription includes everything in the Trial on an ongoing basis — with no 90-day cutoff — so delivery continues for as long as you're subscribed.",
+      faq_a3: "Free provides daily OHLCV for a small set of major TWSE-listed companies. The 3-Month Trial adds broader TWSE-listed coverage, including balance sheet and income statement data, dividends, stock splits, and point-in-time dating for 90 days, but does not include a historical dataset. Cash flow statement data is not currently included. The Paid Subscription continues the same feed while your subscription remains active.",
       faq_q4: "Do I need a credit card for the Free plan or the Trial?",
       faq_a4: "No. Both Free and the 3-Month Trial only require an email address. Card details are only needed if you subscribe to a paid plan.",
       faq_q5: "What happens when my trial ends?",
       faq_a5: "Delivery simply stops after 90 days — you won't be automatically charged. If you'd like to keep receiving data, subscribe to the Paid plan whenever you're ready. Each email address is eligible for one trial.",
       faq_q6: "How is the data delivered?",
-      faq_a6: "By email as a CSV file, typically delivered daily within an 18:00–23:00 (UTC+8) window. No API key or integration required.",
+      faq_a6: "By email as CSV files, typically within an 18:00–23:00 (UTC+8) delivery window on applicable trading days. No API key or system integration is required.",
       faq_q7: "Can I cancel my subscription anytime?",
       faq_a7: "Yes, subscriptions can be cancelled anytime through your Polar customer portal, effective at the end of the current billing period. Any data already delivered to you is yours to keep; cancelling only stops future deliveries.",
       faq_q8: "What if a data point I already received turns out to be wrong or gets revised?",
@@ -1139,9 +1135,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       faq_q10: "Is this investment advice?",
       faq_a10: "No. Data is provided for research and reference purposes only.",
       faq_q11: "Do you offer custom datasets (different markets, fields, or history)?",
-      faq_a11: "Yes — see the Extended / Custom plan, or email us directly to discuss your needs.",
+      faq_a11: "Custom datasets may be available depending on the requested market, fields, and history. See the Extended / Custom plan or email us to discuss your requirements.",
       sec07_title: "Looking for More?",
-      contact_p: "Longer date ranges, additional markets, or additional fields — financial statements, director/supervisor holdings, business indicators. Reach out and we'll put together a plan that fits your research.",
+      contact_p: "Need a longer date range, another market, or additional fields such as financial statements, director/supervisor holdings, or business indicators? Contact us and we can confirm what is available for your research needs.",
       contact_legal: '<strong style="color: var(--ink);">License:</strong> Data is licensed for internal research use only. Redistribution or resale of raw data is prohibited without written permission.<br><br><strong style="color: var(--ink);">Privacy:</strong> If you contact us by email, we use your message only to respond to your inquiry. We do not sell or share your contact information with third parties.',
       footer_disclaimer: "Data provided for research and reference purposes only. Not investment advice.",
       footer_terms: "Terms of Use", footer_privacy: "Privacy Policy",
@@ -1164,11 +1160,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       nav_viewsample: "查看樣本 →",
       ticker_note: "僅為示意資料，非即時報價",
       hero_eyebrow: "結構化市場數據",
-      hero_h1: '歷史數據，時間戳記依<em>可驗證的揭露時點</em>——而非事後回溯認定。',
-      hero_sub: "我們維護台灣、日本與美國市場的結構化股價、財務報表及股利數據。在揭露數據允許的範圍內，依賴申報數字的指標——例如市值——採用當時可取得的資訊（point-in-time）計算，而非事後才知道的數值。",
+      hero_h1: '歷史數據，依<em>資訊當時可取得的時間</em>進行整理。',
+      hero_sub: "我們維護台灣、日本與美國市場的結構化股價、財務報表及股利數據。在能確認揭露時間的情況下，像市值這類會受申報數字影響的指標，會盡量依當時可取得的資訊（point-in-time）計算，而不是使用之後才知道的數值。",
       hero_cta1: "取得 $0.99 樣本資料 →",
       hero_cta2: "查看訂閱方案",
-      hero_note: "免註冊帳號．通常即時寄送",
+      hero_note: "免註冊帳號．購買後通常由系統自動寄送",
       sec01_title: "市場涵蓋範圍",
       cov_tw: "台灣", cov_jp: "日本", cov_us: "美國",
       cov_tw_r1: "股價數據", cov_tw_r1y: "自 1992 年起",
@@ -1181,38 +1177,38 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       cov_us_r1: "股價數據", cov_us_r1y: "自 1993 年起",
       cov_us_r2: "財務報表", cov_us_r2y: "自 2009 年起",
       sec02_title: "數據時間戳記如何產生",
-      method1_title: "Point-in-time 即時可得性",
-      method1_p: "對於持續監控中的資料表，時間戳記的設計目的是反映真實的揭露時點。若記錄需要人工重建——例如在資料蒐集出現缺口之後——時間戳記則改為反映該數字進入我們資料庫的時間。每個資料集皆有資料表層級的詳細說明文件。",
-      method2_title: "有文件記載的備援邏輯",
-      method2_p: "當揭露時點數據缺漏或不一致時，我們會改採法定申報截止日作為備援依據。完整規則皆有文件記載，並不隱藏。",
+      method1_title: "依資訊可取得時間標記",
+      method1_p: "對於持續監控中的資料表，時間戳記會盡量反映來源資訊何時可取得。若某筆資料之後才補建——例如資料蒐集曾出現缺口——時間戳記可能改以該數字實際進入資料庫的時間為準。各資料集會說明所採用的時間標記方式。",
+      method2_title: "無法確認揭露時間時的備援規則",
+      method2_p: "當揭露時間缺漏或不一致時，我們可能改以法定申報截止日作為備援依據，並在資料集說明中標示所採用的規則。",
       method_footnote: "透過我們的 point-in-time 擷取流程進行結構化整理、交叉比對並加上時間戳記。數據可能存在錯誤、缺漏或延遲，僅以「現況」提供，供研究與參考之用。",
       sec03_title: "訂閱方案",
-      pricing_note1: "免費開始使用，先試用完整資料 90 天，準備好後再訂閱。所有付費方案皆於每個交易日以電子郵件寄送——如需特定觀察清單、財務報表欄位，或完全不同的市場，歡迎聯繫我們討論客製化方案。",
+      pricing_note1: "您可以先使用免費資料、試用較完整的台股資料 90 天，或選擇付費訂閱持續接收更新。如需特定股票、欄位、更長歷史期間或其他市場，也可聯繫我們確認客製化資料的可行性。",
       pricing_note2: "數據僅供研究與參考之用，並非投資建議。",
       show_features: "顯示欄位 +", hide_features: "隱藏欄位 −",
-      plan_free_tag: "免費", plan_free_name: "免費樣本資料", plan_free_unit: "永久有效",
+      plan_free_tag: "免費", plan_free_name: "免費樣本資料", plan_free_unit: "持續提供",
       plan_free_b1: "10–20 家台股上市主要企業",
       plan_free_b2: "每日 OHLCV，逐交易日更新",
       plan_free_b3: "電子郵件寄送——免信用卡",
       plan_free_btn: "取得免費資料 →",
-      plan_trial_tag: "3個月試用", plan_trial_name: "完整功能試用", plan_trial_unit: "為期 90 天",
-      plan_trial_b1: "完整台股上市市場涵蓋",
+      plan_trial_tag: "3個月試用", plan_trial_name: "90 天試用", plan_trial_unit: "為期 90 天",
+      plan_trial_b1: "試用方案包含台股上市市場資料",
       plan_trial_b2: "資產負債表與損益表、股利、股票分割",
-      plan_trial_b3: "Point-in-time 方法論，逐日更新",
-      plan_trial_b4: "來源數字修正時，會自動重新寄送更正後的數據",
+      plan_trial_b3: "Point-in-time 時間標記方式與交易日更新",
+      plan_trial_b4: "符合更正條件時，來源數字修正後會重新寄送",
       plan_trial_note: "試用期自註冊日起算 90 天。不含歷史資料集。每組電子郵件地址僅限試用一次。現金流量表尚未提供。若先前寄送的數字後續於來源端修正，我們會在有限期間內重新寄送更正後的數據：收盤價更正於當日交易日內；股利與股票分割更正於原始寄送後 30 天內；資產負債表與損益表更正於同一會計季度內。超出上述期間的更正將不會自動重新寄送。",
       plan_trial_btn: "開始免費試用 →",
-      plan_sub_tag: "最受歡迎", plan_sub_name: "付費訂閱", plan_sub_unit: "／月",
-      plan_sub_b1: "涵蓋試用方案所有內容，且無 90 天期限",
+      plan_sub_tag: "月繳方案", plan_sub_name: "付費訂閱", plan_sub_unit: "／月",
+      plan_sub_b1: "包含試用方案功能，訂閱期間持續寄送",
       plan_sub_b2: "資產負債表與損益表、股利、股票分割",
-      plan_sub_b3: "來源數字修正時，會自動重新寄送更正後的數據",
-      plan_sub_b4: "隨時可取消——已寄送的數據永久歸您所有",
+      plan_sub_b3: "符合更正條件時，來源數字修正後會重新寄送",
+      plan_sub_b4: "可透過 Polar 取消；已寄送資料仍可依授權條款使用",
       plan_sub_note: "通常於每日 18:00–23:00（UTC+8）以電子郵件寄送。現金流量表尚未提供。若先前寄送的數字後續於來源端修正，我們會在有限期間內重新寄送更正後的數據：收盤價更正於當日交易日內；股利與股票分割更正於原始寄送後 30 天內；資產負債表與損益表更正於同一會計季度內。超出上述期間的更正將不會自動重新寄送。",
       plan_sub_btn: "訂閱 →",
       plan_custom_tag: "延伸／客製化", plan_custom_name: "告訴我們您的需求", plan_custom_price: "客製化",
-      plan_custom_b1: "歷史數據回溯至 2000 年",
+      plan_custom_b1: "部分資料集可提供自 2000 年起的歷史資料",
       plan_custom_b2: "特定觀察清單、股票代碼，或董監事持股",
-      plan_custom_b3: "日本／美國市場涵蓋，或其他客製化需求",
+      plan_custom_b3: "日本／美國資料集或其他客製化需求",
       plan_custom_chip1: "2000–2026 年歷史資料", plan_custom_chip2: "客製化股票代碼", plan_custom_chip3: "其他市場",
       plan_custom_btn: "聯絡我們 →",
       plan_custom_email_prefix: "或直接寄信給我們：",
@@ -1221,28 +1217,28 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       sample_h3: "台股上市公司歷史數據樣本（2015 年 6 月–8 月）",
       sample_b1: "預覽我們的資料結構與方法論",
       sample_b2: "台股上市公司，2015 年 6 月至 8 月",
-      sample_b3: "單次購買，即時下載",
-      sample_note: "adjusted_close（還原股價）以本樣本中最近一個交易日為基準——後續若有股利或股票分割，將回溯調整先前的歷史數值以維持該基準。close_price（收盤價）則為實際成交價格，一經公布即不會變動。",
+      sample_b3: "單次購買；結帳完成後提供下載",
+      sample_note: "adjusted_close（還原股價）以本樣本中最近一個交易日為基準，因此後續若發生股利或股票分割，較早期的還原值可能隨之調整。close_price（收盤價）代表該日期來源所公布的收盤價；若來源後續更正，則可能另行反映。",
       sample_onetime: "單次購買",
       sample_buy_btn: "購買樣本 →",
       sec05_title: "團隊",
-      team_mission: "BQI Data 由 Shaochieh Hu 建置與維護，提供台灣、日本與美國市場的結構化股價、財務報表與股利數據——著重於避免前視偏誤（look-ahead bias）的 point-in-time 方法論。",
+      team_mission: "BQI Data 由 Shaochieh Hu 建置與維護，聚焦台灣、日本與美國市場的結構化股價、財務報表與股利數據，並採用以降低歷史研究前視偏誤（look-ahead bias）為目標的 point-in-time 時間標記方式。",
       leader_b1: "打造 BQI Data——提供台灣、日本與美國市場的結構化 point-in-time 金融市場數據",
       leader_b2: "曾於元大投信建置並維護即時金融數據管線，負責該公司 ETF 產品線的淨值（NAV）估算系統開發",
       leader_b3: "具備整合 Bloomberg、Refinitiv 與 ICE 數據源的經驗",
       sec06_title: "常見問題",
       faq_q1: "什麼是 point-in-time 數據？為什麼它很重要？",
-      faq_a1: "Point-in-time 數據僅反映在每個歷史日期當下實際可取得的資訊——例如，市值是以當時已知的股本數字計算，而非以今日已知的數字計算。這能避免回測中出現前視偏誤（look-ahead bias）。",
+      faq_a1: "Point-in-time 數據的目的，是盡量使用每個歷史日期當時可取得的資訊。例如，市值可依當時可取得的股本數字計算，而不是套用之後才知道的數值。這有助於降低回測中的前視偏誤（look-ahead bias）。",
       faq_q2: "你們涵蓋哪些市場與時間範圍？",
       faq_a2: "台灣（TWSE），另提供日本與美國數據集。各資料類型的確切時間範圍請參見上方「市場涵蓋範圍」章節。",
       faq_q3: "免費方案、試用方案與付費訂閱有什麼差別？",
-      faq_a3: "免費方案提供少數台股上市主要企業的每日 OHLCV，永久有效且完全免費。3個月試用方案則開放完整的台股上市市場——包含資產負債表與損益表、股利、股票分割，以及 point-in-time 方法論——為期 90 天，但不含歷史數據集。目前所有方案皆尚未提供現金流量表數據。付費訂閱則持續提供試用方案的所有內容——沒有 90 天的期限——只要您維持訂閱，寄送就會持續進行。",
+      faq_a3: "免費方案提供少數台股上市主要企業的每日 OHLCV。3 個月試用方案則提供較完整的台股上市資料，包含資產負債表與損益表、股利、股票分割，以及 point-in-time 時間標記方式，試用期間為 90 天，但不含歷史資料集。目前各方案尚未包含現金流量表。付費訂閱會在訂閱有效期間持續提供相同類型的資料更新。",
       faq_q4: "免費方案或試用方案需要信用卡嗎？",
       faq_a4: "不需要。免費方案與 3個月試用方案都只需要電子郵件地址即可。只有訂閱付費方案時才需要提供信用卡資訊。",
       faq_q5: "試用期結束後會怎麼樣？",
       faq_a5: "90 天後寄送會自動停止——不會自動向您收費。若您想繼續收到數據，可在準備好時訂閱付費方案。每組電子郵件地址僅限試用一次。",
       faq_q6: "數據如何寄送？",
-      faq_a6: "以電子郵件寄送 CSV 檔案，通常於每日 18:00–23:00（UTC+8）之間寄達。無需 API 金鑰或系統串接。",
+      faq_a6: "以電子郵件寄送 CSV 檔案，適用的交易日通常會在 18:00–23:00（UTC+8）之間寄送。無需 API 金鑰或額外系統串接。",
       faq_q7: "我可以隨時取消訂閱嗎？",
       faq_a7: "可以，您可以隨時透過 Polar 客戶入口網站取消訂閱，取消將於目前計費週期結束時生效。已寄送給您的數據仍歸您所有；取消僅會停止後續的寄送。",
       faq_q8: "如果我已收到的數據後來被發現有誤或遭到修正，該怎麼辦？",
@@ -1252,9 +1248,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       faq_q10: "這是投資建議嗎？",
       faq_a10: "不是。數據僅供研究與參考之用。",
       faq_q11: "你們是否提供客製化數據集（不同市場、欄位或歷史區間）？",
-      faq_a11: "提供——請參考「延伸／客製化」方案，或直接寄信與我們討論您的需求。",
+      faq_a11: "可依您需要的市場、欄位與歷史期間評估是否能提供。請參考「延伸／客製化」方案，或直接寄信與我們討論需求。",
       sec07_title: "想了解更多？",
-      contact_p: "更長的時間範圍、更多市場，或額外欄位——財務報表、董監事持股、景氣指標。歡迎與我們聯繫，我們將為您規劃符合研究需求的方案。",
+      contact_p: "如果您需要更長的時間範圍、其他市場，或財務報表、董監事持股、景氣指標等額外欄位，歡迎與我們聯繫，我們可以先確認目前可提供的內容。",
       contact_legal: '<strong style="color: var(--ink);">授權條款：</strong>數據僅授權供內部研究使用。未經書面同意，禁止重新散布或轉售原始數據。<br><br><strong style="color: var(--ink);">隱私權：</strong>若您透過電子郵件與我們聯繫，我們僅會使用您的訊息內容來回覆您的詢問。我們不會出售或與第三方分享您的聯絡資訊。',
       footer_disclaimer: "數據僅供研究與參考之用，並非投資建議。",
       footer_terms: "使用條款", footer_privacy: "隱私權政策",
