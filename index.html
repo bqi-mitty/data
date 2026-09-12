@@ -21,7 +21,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>BQI Data — Point-in-Time Market Data for Taiwan, Japan & US</title>
+<title id="pageTitle">BQI Data — Point-in-Time Market Data for Taiwan, Japan & US</title>
 <meta name="description" content="Point-in-time structured market data for Taiwan, Japan, and US markets. Built for quantitative researchers who need backtests that don't cheat.">
 
 <!-- Open Graph -->
@@ -124,6 +124,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     justify-content:space-between;
     padding: 22px 6vw;
     border-bottom: 1px solid var(--panel-line);
+    gap: 16px;
+    flex-wrap: wrap;
   }
   .brand{
     font-family: var(--grotesk);
@@ -146,6 +148,12 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   }
   nav.links a:hover{ color: var(--amber); }
 
+  .header-actions{
+    display:flex;
+    align-items:center;
+    gap: 10px;
+  }
+
   .btn{
     display:inline-block;
     font-family: var(--mono);
@@ -165,8 +173,16 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   .btn-ghost{
     border: 1px solid var(--panel-line);
     color: var(--ink);
+    background: none;
+    cursor: pointer;
   }
   .btn-ghost:hover{ border-color: var(--amber); color: var(--amber); }
+
+  .lang-toggle{
+    font-family: var(--mono);
+    font-size: 12px;
+    padding: 9px 14px;
+  }
 
   /* ---------- Hero ---------- */
   .hero{
@@ -195,6 +211,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     letter-spacing: -0.01em;
     max-width: 15ch;
   }
+  html[lang="zh-Hant"] h1{ max-width: 18ch; }
   h1 em{
     font-style: normal;
     color: var(--amber);
@@ -273,6 +290,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   .cov-row .yr{
     font-family: var(--mono);
     color: var(--ink);
+    white-space: nowrap;
+    margin-left: 12px;
   }
 
   /* ---------- Methodology ---------- */
@@ -604,61 +623,64 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
   <div class="ticker-wrap">
     <div class="ticker-scroll"><div class="ticker" id="tickerTrack"></div></div>
-    <div class="ticker-note">Illustrative data, not live quotes</div>
+    <div class="ticker-note" data-i18n="ticker_note">Illustrative data, not live quotes</div>
   </div>
 
   <header class="site">
     <div class="brand"><span class="dot"></span>BQI DATA</div>
     <nav class="links">
-      <a href="#coverage">Coverage</a>
-      <a href="#methodology">Methodology</a>
-      <a href="#pricing">Pricing</a>
-      <a href="#sample">Sample</a>
-      <a href="#team">Team</a>
-      <a href="#faq">FAQ</a>
-      <a href="#contact">Contact</a>
+      <a href="#coverage" data-i18n="nav_coverage">Coverage</a>
+      <a href="#methodology" data-i18n="nav_methodology">Methodology</a>
+      <a href="#pricing" data-i18n="nav_pricing">Pricing</a>
+      <a href="#sample" data-i18n="nav_sample">Sample</a>
+      <a href="#team" data-i18n="nav_team">Team</a>
+      <a href="#faq" data-i18n="nav_faq">FAQ</a>
+      <a href="#contact" data-i18n="nav_contact">Contact</a>
     </nav>
-    <a class="btn btn-ghost" href="#sample">View Sample →</a>
+    <div class="header-actions">
+      <button type="button" class="btn btn-ghost lang-toggle" id="langToggle" onclick="toggleLang()">中文</button>
+      <a class="btn btn-ghost" href="#sample" data-i18n="nav_viewsample">View Sample →</a>
+    </div>
   </header>
 
   <section class="hero">
-    <div class="eyebrow">Structured Market Data</div>
-    <h1>Historical data, dated to <em>verifiable availability</em> — not hindsight.</h1>
-    <p class="sub">
+    <div class="eyebrow" data-i18n="hero_eyebrow">Structured Market Data</div>
+    <h1 data-i18n-html="hero_h1">Historical data, dated to <em>verifiable availability</em> — not hindsight.</h1>
+    <p class="sub" data-i18n="hero_sub">
       We maintain structured price, financial statement, and dividend data for Taiwan, Japan, and US markets.
       Where the underlying disclosure data allows it, metrics that depend on reported figures — like market
       capitalization — are calculated using point-in-time availability rather than retroactively known values.
     </p>
     <div class="hero-cta">
-      <a class="btn btn-primary" href="https://buy.polar.sh/polar_cl_d8AuPTNGjWsNW9bB2eQR7nB399hKdhpYwW81X2MbC0f">Get the $0.99 Sample →</a>
-      <a class="btn btn-ghost" href="#pricing">See Subscription Plans</a>
-      <span class="hero-note">No account required · Usually delivered immediately</span>
+      <a class="btn btn-primary" href="https://buy.polar.sh/polar_cl_d8AuPTNGjWsNW9bB2eQR7nB399hKdhpYwW81X2MbC0f" data-i18n="hero_cta1">Get the $0.99 Sample →</a>
+      <a class="btn btn-ghost" href="#pricing" data-i18n="hero_cta2">See Subscription Plans</a>
+      <span class="hero-note" data-i18n="hero_note">No account required · Usually delivered immediately</span>
     </div>
   </section>
 
   <section id="coverage">
     <div class="section-head">
       <span class="section-num">01</span>
-      <h2>Market Coverage</h2>
+      <h2 data-i18n="sec01_title">Market Coverage</h2>
     </div>
     <div class="coverage-grid">
       <div class="cov-cell">
-        <div class="cov-market">🇹🇼 Taiwan</div>
-        <div class="cov-row"><span>Stock price data</span><span class="yr">since 1992</span></div>
-        <div class="cov-row"><span>Financial statements</span><span class="yr">since 1989</span></div>
-        <div class="cov-row"><span>Director/supervisor holdings</span><span class="yr">since 2000</span></div>
-        <div class="cov-row"><span>Business indicators</span><span class="yr">since 1982</span></div>
-        <div class="cov-row"><span>Dividend data</span><span class="yr">since 2000</span></div>
+        <div class="cov-market">🇹🇼 <span data-i18n="cov_tw">Taiwan</span></div>
+        <div class="cov-row"><span data-i18n="cov_tw_r1">Stock price data</span><span class="yr" data-i18n="cov_tw_r1y">since 1992</span></div>
+        <div class="cov-row"><span data-i18n="cov_tw_r2">Financial statements</span><span class="yr" data-i18n="cov_tw_r2y">since 1989</span></div>
+        <div class="cov-row"><span data-i18n="cov_tw_r3">Director/supervisor holdings</span><span class="yr" data-i18n="cov_tw_r3y">since 2000</span></div>
+        <div class="cov-row"><span data-i18n="cov_tw_r4">Business indicators</span><span class="yr" data-i18n="cov_tw_r4y">since 1982</span></div>
+        <div class="cov-row"><span data-i18n="cov_tw_r5">Dividend data</span><span class="yr" data-i18n="cov_tw_r5y">since 2000</span></div>
       </div>
       <div class="cov-cell">
-        <div class="cov-market">🇯🇵 Japan</div>
-        <div class="cov-row"><span>Stock price data</span><span class="yr">since 1999</span></div>
-        <div class="cov-row"><span>Financial statements</span><span class="yr">since 2014</span></div>
+        <div class="cov-market">🇯🇵 <span data-i18n="cov_jp">Japan</span></div>
+        <div class="cov-row"><span data-i18n="cov_jp_r1">Stock price data</span><span class="yr" data-i18n="cov_jp_r1y">since 1999</span></div>
+        <div class="cov-row"><span data-i18n="cov_jp_r2">Financial statements</span><span class="yr" data-i18n="cov_jp_r2y">since 2014</span></div>
       </div>
       <div class="cov-cell">
-        <div class="cov-market">🇺🇸 United States</div>
-        <div class="cov-row"><span>Stock price data</span><span class="yr">since 1993</span></div>
-        <div class="cov-row"><span>Financial statements</span><span class="yr">since 2009</span></div>
+        <div class="cov-market">🇺🇸 <span data-i18n="cov_us">United States</span></div>
+        <div class="cov-row"><span data-i18n="cov_us_r1">Stock price data</span><span class="yr" data-i18n="cov_us_r1y">since 1993</span></div>
+        <div class="cov-row"><span data-i18n="cov_us_r2">Financial statements</span><span class="yr" data-i18n="cov_us_r2y">since 2009</span></div>
       </div>
     </div>
   </section>
@@ -666,24 +688,24 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <section id="methodology">
     <div class="section-head">
       <span class="section-num">02</span>
-      <h2>How the Data Is Dated</h2>
+      <h2 data-i18n="sec02_title">How the Data Is Dated</h2>
     </div>
     <div class="method-grid">
       <div class="method-card">
         <div class="idx">/ 01</div>
-        <h3>Point-in-time availability</h3>
-        <p>For tables under active monitoring, timestamps are designed to reflect true disclosure timing. Where records
+        <h3 data-i18n="method1_title">Point-in-time availability</h3>
+        <p data-i18n="method1_p">For tables under active monitoring, timestamps are designed to reflect true disclosure timing. Where records
            required manual reconstruction — for example after a collection gap — timestamps reflect when
            the figure entered our database instead. Table-level detail is documented for each dataset.</p>
       </div>
       <div class="method-card">
         <div class="idx">/ 02</div>
-        <h3>Documented fallback logic</h3>
-        <p>When disclosure timing data is missing or inconsistent, we fall back to statutory filing
+        <h3 data-i18n="method2_title">Documented fallback logic</h3>
+        <p data-i18n="method2_p">When disclosure timing data is missing or inconsistent, we fall back to statutory filing
            deadlines. The full rule set is documented, not hidden.</p>
       </div>
     </div>
-    <p style="color: var(--ink-dim); font-size: 13px; margin-top: 30px; max-width: 62ch;">
+    <p style="color: var(--ink-dim); font-size: 13px; margin-top: 30px; max-width: 62ch;" data-i18n="method_footnote">
       Structured, cross-referenced, and timestamped through our point-in-time capture pipeline.
       Data may contain errors, gaps, or delays. Provided as-is, for research and reference purposes.
     </p>
@@ -692,27 +714,27 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <section id="pricing">
     <div class="section-head">
       <span class="section-num">03</span>
-      <h2>Plans</h2>
+      <h2 data-i18n="sec03_title">Plans</h2>
     </div>
-    <p class="pricing-note">
+    <p class="pricing-note" data-i18n="pricing_note1">
       Start free, try the full feed for 90 days, then subscribe when you're ready. Every paid plan is delivered
       by email each trading day — need a specific watchlist, financial statement fields, or a different market
       entirely? Reach out about a custom plan.
     </p>
-    <p class="pricing-note" style="font-family: var(--mono); font-size: 12.5px; margin-top: -26px;">
+    <p class="pricing-note" style="font-family: var(--mono); font-size: 12.5px; margin-top: -26px;" data-i18n="pricing_note2">
       Data provided for research and reference purposes only. Not investment advice.
     </p>
     <div class="pricing-grid">
       <div class="plan-card">
-        <div class="plan-tag">Free</div>
-        <div class="plan-name">Free Sample Feed</div>
-        <div class="plan-price">$0<span class="unit">no expiration</span></div>
+        <div class="plan-tag" data-i18n="plan_free_tag">Free</div>
+        <div class="plan-name" data-i18n="plan_free_name">Free Sample Feed</div>
+        <div class="plan-price">$0<span class="unit" data-i18n="plan_free_unit">no expiration</span></div>
         <ul class="bullet-list">
-          <li>10–20 major TWSE-listed companies</li>
-          <li>Daily OHLCV, updated every trading day</li>
-          <li>Email delivery — no card required</li>
+          <li data-i18n="plan_free_b1">10–20 major TWSE-listed companies</li>
+          <li data-i18n="plan_free_b2">Daily OHLCV, updated every trading day</li>
+          <li data-i18n="plan_free_b3">Email delivery — no card required</li>
         </ul>
-        <button class="features-toggle" onclick="toggleFeatures(this)">Show Features +</button>
+        <button class="features-toggle" data-i18n="show_features" onclick="toggleFeatures(this)">Show Features +</button>
         <div class="plan-features" style="display:none;">
           <div class="plan-fields">
             <span class="field-chip">ticker</span>
@@ -723,21 +745,21 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <form class="signup-form" data-plan="free" onsubmit="return handleSignup(event)">
           <input type="email" class="signup-input" name="email" placeholder="you@email.com" required>
           <input type="text" name="website" class="hp-field" tabindex="-1" autocomplete="off" aria-hidden="true">
-          <button type="submit" class="btn btn-primary">Get Free Access →</button>
+          <button type="submit" class="btn btn-primary" data-i18n="plan_free_btn">Get Free Access →</button>
           <div class="signup-msg" role="status"></div>
         </form>
       </div>
       <div class="plan-card">
-        <div class="plan-tag" style="color: var(--green);">3-Month Trial</div>
-        <div class="plan-name">Full Access Trial</div>
-        <div class="plan-price">$0<span class="unit">for 90 days</span></div>
+        <div class="plan-tag" style="color: var(--green);" data-i18n="plan_trial_tag">3-Month Trial</div>
+        <div class="plan-name" data-i18n="plan_trial_name">Full Access Trial</div>
+        <div class="plan-price">$0<span class="unit" data-i18n="plan_trial_unit">for 90 days</span></div>
         <ul class="bullet-list">
-          <li>Full TWSE-listed market coverage</li>
-          <li>Balance sheet &amp; income statement, dividends, stock splits</li>
-          <li>Point-in-time methodology, daily updates</li>
-          <li>Corrected data re-sent automatically when source figures are revised</li>
+          <li data-i18n="plan_trial_b1">Full TWSE-listed market coverage</li>
+          <li data-i18n-html="plan_trial_b2">Balance sheet &amp; income statement, dividends, stock splits</li>
+          <li data-i18n="plan_trial_b3">Point-in-time methodology, daily updates</li>
+          <li data-i18n="plan_trial_b4">Corrected data re-sent automatically when source figures are revised</li>
         </ul>
-        <button class="features-toggle" onclick="toggleFeatures(this)">Show Features +</button>
+        <button class="features-toggle" data-i18n="show_features" onclick="toggleFeatures(this)">Show Features +</button>
         <div class="plan-features" style="display:none;">
           <div class="plan-fields">
             <span class="field-chip">ticker</span>
@@ -749,26 +771,26 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             <span class="field-chip">stock_split</span>
             <span class="field-chip">point-in-time</span>
           </div>
-          <div class="plan-note">Trial runs 90 days from signup. No historical dataset included. One trial per email address. Cash flow statement not yet available. If a previously delivered figure is later revised at the source, we re-send corrected data within a limited window: same trading day for closing price corrections, within 30 days of original delivery for dividend and stock-split corrections, and within the same fiscal quarter for balance sheet and income statement corrections. Corrections outside these windows are not automatically re-sent.</div>
+          <div class="plan-note" data-i18n="plan_trial_note">Trial runs 90 days from signup. No historical dataset included. One trial per email address. Cash flow statement not yet available. If a previously delivered figure is later revised at the source, we re-send corrected data within a limited window: same trading day for closing price corrections, within 30 days of original delivery for dividend and stock-split corrections, and within the same fiscal quarter for balance sheet and income statement corrections. Corrections outside these windows are not automatically re-sent.</div>
         </div>
         <form class="signup-form" data-plan="trial" onsubmit="return handleSignup(event)">
           <input type="email" class="signup-input" name="email" placeholder="you@email.com" required>
           <input type="text" name="website" class="hp-field" tabindex="-1" autocomplete="off" aria-hidden="true">
-          <button type="submit" class="btn btn-primary">Start Free Trial →</button>
+          <button type="submit" class="btn btn-primary" data-i18n="plan_trial_btn">Start Free Trial →</button>
           <div class="signup-msg" role="status"></div>
         </form>
       </div>
       <div class="plan-card featured">
-        <div class="plan-tag">Most popular</div>
-        <div class="plan-name">Paid Subscription</div>
-        <div class="plan-price">$19.99<span class="unit">/ month</span></div>
+        <div class="plan-tag" data-i18n="plan_sub_tag">Most popular</div>
+        <div class="plan-name" data-i18n="plan_sub_name">Paid Subscription</div>
+        <div class="plan-price">$19.99<span class="unit" data-i18n="plan_sub_unit">/ month</span></div>
         <ul class="bullet-list">
-          <li>Everything in the Trial, with no 90-day limit</li>
-          <li>Balance sheet &amp; income statement, dividends, stock splits</li>
-          <li>Corrected data re-sent automatically when source figures are revised</li>
-          <li>Cancel anytime — data already delivered is yours to keep</li>
+          <li data-i18n="plan_sub_b1">Everything in the Trial, with no 90-day limit</li>
+          <li data-i18n-html="plan_sub_b2">Balance sheet &amp; income statement, dividends, stock splits</li>
+          <li data-i18n="plan_sub_b3">Corrected data re-sent automatically when source figures are revised</li>
+          <li data-i18n="plan_sub_b4">Cancel anytime — data already delivered is yours to keep</li>
         </ul>
-        <button class="features-toggle" onclick="toggleFeatures(this)">Show Features +</button>
+        <button class="features-toggle" data-i18n="show_features" onclick="toggleFeatures(this)">Show Features +</button>
         <div class="plan-features" style="display:none;">
           <div class="plan-fields">
             <span class="field-chip">ticker</span>
@@ -780,30 +802,30 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             <span class="field-chip">stock_split</span>
             <span class="field-chip">point-in-time</span>
           </div>
-          <div class="plan-note">Typically delivered by email between 18:00–23:00 (UTC+8) daily. Cash flow statement not yet available. If a previously delivered figure is later revised at the source, we re-send corrected data within a limited window: same trading day for closing price corrections, within 30 days of original delivery for dividend and stock-split corrections, and within the same fiscal quarter for balance sheet and income statement corrections. Corrections outside these windows are not automatically re-sent.</div>
+          <div class="plan-note" data-i18n="plan_sub_note">Typically delivered by email between 18:00–23:00 (UTC+8) daily. Cash flow statement not yet available. If a previously delivered figure is later revised at the source, we re-send corrected data within a limited window: same trading day for closing price corrections, within 30 days of original delivery for dividend and stock-split corrections, and within the same fiscal quarter for balance sheet and income statement corrections. Corrections outside these windows are not automatically re-sent.</div>
         </div>
-        <a class="btn btn-primary" href="https://buy.polar.sh/polar_cl_K4RJvEWIat1No9M6m0uWcTUt2DRvVkvkWrfpC00LbLq">Subscribe →</a>
+        <a class="btn btn-primary" href="https://buy.polar.sh/polar_cl_K4RJvEWIat1No9M6m0uWcTUt2DRvVkvkWrfpC00LbLq" data-i18n="plan_sub_btn">Subscribe →</a>
       </div>
       <div class="plan-card">
-        <div class="plan-tag">Extended / Custom</div>
-        <div class="plan-name">Tell us what you need</div>
-        <div class="plan-price">Custom</div>
+        <div class="plan-tag" data-i18n="plan_custom_tag">Extended / Custom</div>
+        <div class="plan-name" data-i18n="plan_custom_name">Tell us what you need</div>
+        <div class="plan-price" data-i18n="plan_custom_price">Custom</div>
         <ul class="bullet-list">
-          <li>Historical data back to 2000</li>
-          <li>Specific watchlists, tickers, or director/supervisor holdings</li>
-          <li>Japan / US market coverage or other bespoke requirements</li>
+          <li data-i18n="plan_custom_b1">Historical data back to 2000</li>
+          <li data-i18n="plan_custom_b2">Specific watchlists, tickers, or director/supervisor holdings</li>
+          <li data-i18n="plan_custom_b3">Japan / US market coverage or other bespoke requirements</li>
         </ul>
-        <button class="features-toggle" onclick="toggleFeatures(this)">Show Features +</button>
+        <button class="features-toggle" data-i18n="show_features" onclick="toggleFeatures(this)">Show Features +</button>
         <div class="plan-features" style="display:none;">
           <div class="plan-fields">
-            <span class="field-chip">2000–2026 history</span>
-            <span class="field-chip">custom tickers</span>
-            <span class="field-chip">other markets</span>
+            <span class="field-chip" data-i18n="plan_custom_chip1">2000–2026 history</span>
+            <span class="field-chip" data-i18n="plan_custom_chip2">custom tickers</span>
+            <span class="field-chip" data-i18n="plan_custom_chip3">other markets</span>
           </div>
         </div>
-        <a class="btn btn-ghost" href="mailto:bqi.mitty@gmail.com?subject=Custom%20dataset%20inquiry">Contact us →</a>
+        <a class="btn btn-ghost" href="mailto:bqi.mitty@gmail.com?subject=Custom%20dataset%20inquiry" data-i18n="plan_custom_btn">Contact us →</a>
         <div style="font-family: var(--mono); font-size: 11.5px; color: var(--ink-dim); margin-top: 10px; user-select: all;">
-          Or email us directly: bqi.mitty@gmail.com
+          <span data-i18n="plan_custom_email_prefix">Or email us directly:</span> bqi.mitty@gmail.com
         </div>
       </div>
     </div>
@@ -812,18 +834,18 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <section id="sample">
     <div class="section-head">
       <span class="section-num">04</span>
-      <h2>Try Our Sample</h2>
+      <h2 data-i18n="sec04_title">Try Our Sample</h2>
     </div>
     <div class="sample-card">
       <div>
-        <div class="tag">Sample Dataset</div>
-        <h3>Taiwan Listed Companies Historical Dataset Sample (2015 Jun-Aug)</h3>
+        <div class="tag" data-i18n="sample_tag">Sample Dataset</div>
+        <h3 data-i18n="sample_h3">Taiwan Listed Companies Historical Dataset Sample (2015 Jun-Aug)</h3>
         <ul class="bullet-list" style="margin-top:14px;">
-          <li>Preview our data structure and methodology</li>
-          <li>TWSE-listed companies, Jun–Aug 2015</li>
-          <li>One-time purchase, instant download</li>
+          <li data-i18n="sample_b1">Preview our data structure and methodology</li>
+          <li data-i18n="sample_b2">TWSE-listed companies, Jun–Aug 2015</li>
+          <li data-i18n="sample_b3">One-time purchase, instant download</li>
         </ul>
-        <button class="features-toggle" onclick="toggleFeatures(this)">Show Features +</button>
+        <button class="features-toggle" data-i18n="show_features" onclick="toggleFeatures(this)">Show Features +</button>
         <div class="plan-features" style="display:none;">
           <div class="sample-fields">
             <span class="field-chip">ticker</span>
@@ -833,14 +855,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             <span class="field-chip">stock_dividend</span>
             <span class="field-chip">adjusted_close</span>
           </div>
-          <div class="plan-note">adjusted_close is anchored to the most recent trading day in this sample — a later dividend or stock split would revise earlier historical values to keep that anchor. close_price is the actual traded price and never changes once published.</div>
+          <div class="plan-note" data-i18n="sample_note">adjusted_close is anchored to the most recent trading day in this sample — a later dividend or stock split would revise earlier historical values to keep that anchor. close_price is the actual traded price and never changes once published.</div>
         </div>
       </div>
       <div class="price-block">
-        <div class="price-sub">one-time</div>
+        <div class="price-sub" data-i18n="sample_onetime">one-time</div>
         <div class="price">$0.99</div>
         <a class="btn btn-primary" style="margin-top:16px; display:inline-block;"
-           href="https://buy.polar.sh/polar_cl_d8AuPTNGjWsNW9bB2eQR7nB399hKdhpYwW81X2MbC0f">Buy Sample →</a>
+           href="https://buy.polar.sh/polar_cl_d8AuPTNGjWsNW9bB2eQR7nB399hKdhpYwW81X2MbC0f" data-i18n="sample_buy_btn">Buy Sample →</a>
       </div>
     </div>
   </section>
@@ -848,9 +870,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <section id="team">
     <div class="section-head">
       <span class="section-num">05</span>
-      <h2>Team</h2>
+      <h2 data-i18n="sec05_title">Team</h2>
     </div>
-    <p class="team-mission">
+    <p class="team-mission" data-i18n="team_mission">
       BQI Data is built and maintained by Shaochieh Hu, maintaining structured price, financial statement,
       and dividend data for Taiwan, Japan, and US markets — with a focus on point-in-time methodology that
       avoids look-ahead bias.
@@ -860,9 +882,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <div>
         <div class="leader-name">Shaochieh Hu</div>
         <ul class="leader-bio-list">
-          <li>Building BQI Data — structured, point-in-time financial market data for Taiwan, Japan, and US markets</li>
-          <li>Built and maintained real-time financial data pipelines at Yuanta Securities Investment Trust, engineering NAV estimation systems across the firm's ETF lineup</li>
-          <li>Experienced integrating Bloomberg, Refinitiv, and ICE data feeds</li>
+          <li data-i18n="leader_b1">Building BQI Data — structured, point-in-time financial market data for Taiwan, Japan, and US markets</li>
+          <li data-i18n="leader_b2">Built and maintained real-time financial data pipelines at Yuanta Securities Investment Trust, engineering NAV estimation systems across the firm's ETF lineup</li>
+          <li data-i18n="leader_b3">Experienced integrating Bloomberg, Refinitiv, and ICE data feeds</li>
         </ul>
       </div>
     </div>
@@ -871,65 +893,65 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <section id="faq">
     <div class="section-head">
       <span class="section-num">06</span>
-      <h2>FAQ</h2>
+      <h2 data-i18n="sec06_title">FAQ</h2>
     </div>
     <div class="faq-item">
-      <div class="faq-q">What is point-in-time data, and why does it matter?</div>
-      <div class="faq-a">Point-in-time data reflects only the information that was actually available as of each historical date — for example, market cap is calculated using the share capital figure known at that time, not the figure known today. This avoids look-ahead bias in backtests.</div>
+      <div class="faq-q" data-i18n="faq_q1">What is point-in-time data, and why does it matter?</div>
+      <div class="faq-a" data-i18n="faq_a1">Point-in-time data reflects only the information that was actually available as of each historical date — for example, market cap is calculated using the share capital figure known at that time, not the figure known today. This avoids look-ahead bias in backtests.</div>
     </div>
     <div class="faq-item">
-      <div class="faq-q">What markets and time ranges do you cover?</div>
-      <div class="faq-a">Taiwan (TWSE), with additional Japan and US datasets available. See the Market Coverage section above for exact date ranges per data type.</div>
+      <div class="faq-q" data-i18n="faq_q2">What markets and time ranges do you cover?</div>
+      <div class="faq-a" data-i18n="faq_a2">Taiwan (TWSE), with additional Japan and US datasets available. See the Market Coverage section above for exact date ranges per data type.</div>
     </div>
     <div class="faq-item">
-      <div class="faq-q">What's the difference between Free, the Trial, and the Paid Subscription?</div>
-      <div class="faq-a">Free gives you daily OHLCV for a small set of major TWSE-listed companies, with no expiration, at no cost. The 3-Month Trial unlocks the full TWSE-listed market — balance sheet and income statement, dividends, stock splits, and point-in-time methodology — for 90 days, but without a historical dataset. Cash flow statement data is not yet available on any plan. The Paid Subscription includes everything in the Trial on an ongoing basis — with no 90-day cutoff — so delivery continues for as long as you're subscribed.</div>
+      <div class="faq-q" data-i18n="faq_q3">What's the difference between Free, the Trial, and the Paid Subscription?</div>
+      <div class="faq-a" data-i18n="faq_a3">Free gives you daily OHLCV for a small set of major TWSE-listed companies, with no expiration, at no cost. The 3-Month Trial unlocks the full TWSE-listed market — balance sheet and income statement, dividends, stock splits, and point-in-time methodology — for 90 days, but without a historical dataset. Cash flow statement data is not yet available on any plan. The Paid Subscription includes everything in the Trial on an ongoing basis — with no 90-day cutoff — so delivery continues for as long as you're subscribed.</div>
     </div>
     <div class="faq-item">
-      <div class="faq-q">Do I need a credit card for the Free plan or the Trial?</div>
-      <div class="faq-a">No. Both Free and the 3-Month Trial only require an email address. Card details are only needed if you subscribe to a paid plan.</div>
+      <div class="faq-q" data-i18n="faq_q4">Do I need a credit card for the Free plan or the Trial?</div>
+      <div class="faq-a" data-i18n="faq_a4">No. Both Free and the 3-Month Trial only require an email address. Card details are only needed if you subscribe to a paid plan.</div>
     </div>
     <div class="faq-item">
-      <div class="faq-q">What happens when my trial ends?</div>
-      <div class="faq-a">Delivery simply stops after 90 days — you won't be automatically charged. If you'd like to keep receiving data, subscribe to the Paid plan whenever you're ready. Each email address is eligible for one trial.</div>
+      <div class="faq-q" data-i18n="faq_q5">What happens when my trial ends?</div>
+      <div class="faq-a" data-i18n="faq_a5">Delivery simply stops after 90 days — you won't be automatically charged. If you'd like to keep receiving data, subscribe to the Paid plan whenever you're ready. Each email address is eligible for one trial.</div>
     </div>
     <div class="faq-item">
-      <div class="faq-q">How is the data delivered?</div>
-      <div class="faq-a">By email as a CSV file, typically delivered daily within an 18:00–23:00 (UTC+8) window. No API key or integration required.</div>
+      <div class="faq-q" data-i18n="faq_q6">How is the data delivered?</div>
+      <div class="faq-a" data-i18n="faq_a6">By email as a CSV file, typically delivered daily within an 18:00–23:00 (UTC+8) window. No API key or integration required.</div>
     </div>
     <div class="faq-item">
-      <div class="faq-q">Can I cancel my subscription anytime?</div>
-      <div class="faq-a">Yes, subscriptions can be cancelled anytime through your Polar customer portal, effective at the end of the current billing period. Any data already delivered to you is yours to keep; cancelling only stops future deliveries.</div>
+      <div class="faq-q" data-i18n="faq_q7">Can I cancel my subscription anytime?</div>
+      <div class="faq-a" data-i18n="faq_a7">Yes, subscriptions can be cancelled anytime through your Polar customer portal, effective at the end of the current billing period. Any data already delivered to you is yours to keep; cancelling only stops future deliveries.</div>
     </div>
     <div class="faq-item">
-      <div class="faq-q">What if a data point I already received turns out to be wrong or gets revised?</div>
-      <div class="faq-a">For the Trial and Paid Subscription, corrected data is re-sent automatically when source figures are revised — same trading day for closing prices, within 30 days of original delivery for dividends and stock splits, and within the same fiscal quarter for balance sheet and income statement items. Outside those windows, or if you spot something that looks wrong, email us at bqi.mitty@gmail.com with the ticker and date and we'll investigate.</div>
+      <div class="faq-q" data-i18n="faq_q8">What if a data point I already received turns out to be wrong or gets revised?</div>
+      <div class="faq-a" data-i18n="faq_a8">For the Trial and Paid Subscription, corrected data is re-sent automatically when source figures are revised — same trading day for closing prices, within 30 days of original delivery for dividends and stock splits, and within the same fiscal quarter for balance sheet and income statement items. Outside those windows, or if you spot something that looks wrong, email us at bqi.mitty@gmail.com with the ticker and date and we'll investigate.</div>
     </div>
     <div class="faq-item">
-      <div class="faq-q">Can I resell or redistribute the data?</div>
-      <div class="faq-a">No — data is licensed for internal research use only. Redistribution or resale of raw data requires written permission.</div>
+      <div class="faq-q" data-i18n="faq_q9">Can I resell or redistribute the data?</div>
+      <div class="faq-a" data-i18n="faq_a9">No — data is licensed for internal research use only. Redistribution or resale of raw data requires written permission.</div>
     </div>
     <div class="faq-item">
-      <div class="faq-q">Is this investment advice?</div>
-      <div class="faq-a">No. Data is provided for research and reference purposes only.</div>
+      <div class="faq-q" data-i18n="faq_q10">Is this investment advice?</div>
+      <div class="faq-a" data-i18n="faq_a10">No. Data is provided for research and reference purposes only.</div>
     </div>
     <div class="faq-item">
-      <div class="faq-q">Do you offer custom datasets (different markets, fields, or history)?</div>
-      <div class="faq-a">Yes — see the Extended / Custom plan, or email us directly to discuss your needs.</div>
+      <div class="faq-q" data-i18n="faq_q11">Do you offer custom datasets (different markets, fields, or history)?</div>
+      <div class="faq-a" data-i18n="faq_a11">Yes — see the Extended / Custom plan, or email us directly to discuss your needs.</div>
     </div>
   </section>
 
   <section id="contact" class="contact-section">
     <div class="section-head">
       <span class="section-num">07</span>
-      <h2>Looking for More?</h2>
+      <h2 data-i18n="sec07_title">Looking for More?</h2>
     </div>
     <div class="contact-box">
-      <p>Longer date ranges, additional markets, or additional fields — financial statements, director/supervisor
+      <p data-i18n="contact_p">Longer date ranges, additional markets, or additional fields — financial statements, director/supervisor
          holdings, business indicators. Reach out and we'll put together a plan that fits your research.</p>
       <a class="btn btn-ghost" href="mailto:bqi.mitty@gmail.com" style="user-select: all;">bqi.mitty@gmail.com</a>
     </div>
-    <p style="color: var(--ink-dim); font-size: 12.5px; margin-top: 26px; max-width: 62ch;">
+    <p style="color: var(--ink-dim); font-size: 12.5px; margin-top: 26px; max-width: 62ch;" data-i18n-html="contact_legal">
       <strong style="color: var(--ink);">License:</strong> Data is licensed for internal research use only.
       Redistribution or resale of raw data is prohibited without written permission.
       <br><br>
@@ -941,8 +963,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <footer>
     <span>© 2026 BQI Data</span>
     <span>+886-912-296-321 · No. 12, Aly. 12, Ln. 232, Dafu Rd., Zhuangwei Township, Yilan County 263, Taiwan</span>
-    <span>Data provided for research and reference purposes only. Not investment advice.</span>
-    <span class="footer-links"><a href="terms.html">Terms of Use</a><a href="privacy.html">Privacy Policy</a></span>
+    <span data-i18n="footer_disclaimer">Data provided for research and reference purposes only. Not investment advice.</span>
+    <span class="footer-links"><a href="terms.html" data-i18n="footer_terms">Terms of Use</a><a href="privacy.html" data-i18n="footer_privacy">Privacy Policy</a></span>
   </footer>
 
 <script>
@@ -963,7 +985,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     const panel = btn.nextElementSibling;
     const show = panel.style.display === 'none';
     panel.style.display = show ? 'block' : 'none';
-    btn.textContent = show ? 'Hide Features −' : 'Show Features +';
+    btn.textContent = show ? I18N[currentLang].hide_features : I18N[currentLang].show_features;
   }
 
   // Free / Trial signup — posts to the BQI Data signup worker
@@ -982,7 +1004,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     msgEl.textContent = '';
     msgEl.className = 'signup-msg';
     btn.disabled = true;
-    btn.textContent = 'Sending...';
+    btn.textContent = I18N[currentLang].sending;
 
     try {
       const res = await fetch(SIGNUP_ENDPOINT, {
@@ -993,22 +1015,22 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       const data = await res.json();
 
       if (data.success) {
-        msgEl.textContent = "Thanks — we've received your request. You'll hear from us by email once it's set up.";
+        msgEl.textContent = I18N[currentLang].signup_success;
         msgEl.className = 'signup-msg success';
         form.reset();
       } else {
         const messages = {
-          invalid_email: 'Please enter a valid email address.',
-          already_submitted: 'This email has already signed up recently.',
-          trial_already_used: 'This email has already used its trial — one trial per email address.',
-          rate_limited: 'Too many requests — please try again later.',
-          invalid_plan_type: 'Something went wrong. Please refresh and try again.'
+          invalid_email: I18N[currentLang].err_invalid_email,
+          already_submitted: I18N[currentLang].err_already_submitted,
+          trial_already_used: I18N[currentLang].err_trial_used,
+          rate_limited: I18N[currentLang].err_rate_limited,
+          invalid_plan_type: I18N[currentLang].err_invalid_plan
         };
-        msgEl.textContent = messages[data.error] || 'Something went wrong. Please try again.';
+        msgEl.textContent = messages[data.error] || I18N[currentLang].err_generic;
         msgEl.className = 'signup-msg error';
       }
     } catch (err) {
-      msgEl.textContent = 'Network error — please try again in a moment.';
+      msgEl.textContent = I18N[currentLang].err_network;
       msgEl.className = 'signup-msg error';
     } finally {
       btn.disabled = false;
@@ -1017,6 +1039,274 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
     return false;
   }
+
+  /* ================= i18n ================= */
+  const I18N = {
+    en: {
+      __title: "BQI Data — Point-in-Time Market Data for Taiwan, Japan & US",
+      __html_lang: "en",
+      toggle_label: "中文",
+      nav_coverage: "Coverage", nav_methodology: "Methodology", nav_pricing: "Pricing",
+      nav_sample: "Sample", nav_team: "Team", nav_faq: "FAQ", nav_contact: "Contact",
+      nav_viewsample: "View Sample →",
+      ticker_note: "Illustrative data, not live quotes",
+      hero_eyebrow: "Structured Market Data",
+      hero_h1: 'Historical data, dated to <em>verifiable availability</em> — not hindsight.',
+      hero_sub: "We maintain structured price, financial statement, and dividend data for Taiwan, Japan, and US markets. Where the underlying disclosure data allows it, metrics that depend on reported figures — like market capitalization — are calculated using point-in-time availability rather than retroactively known values.",
+      hero_cta1: "Get the $0.99 Sample →",
+      hero_cta2: "See Subscription Plans",
+      hero_note: "No account required · Usually delivered immediately",
+      sec01_title: "Market Coverage",
+      cov_tw: "Taiwan", cov_jp: "Japan", cov_us: "United States",
+      cov_tw_r1: "Stock price data", cov_tw_r1y: "since 1992",
+      cov_tw_r2: "Financial statements", cov_tw_r2y: "since 1989",
+      cov_tw_r3: "Director/supervisor holdings", cov_tw_r3y: "since 2000",
+      cov_tw_r4: "Business indicators", cov_tw_r4y: "since 1982",
+      cov_tw_r5: "Dividend data", cov_tw_r5y: "since 2000",
+      cov_jp_r1: "Stock price data", cov_jp_r1y: "since 1999",
+      cov_jp_r2: "Financial statements", cov_jp_r2y: "since 2014",
+      cov_us_r1: "Stock price data", cov_us_r1y: "since 1993",
+      cov_us_r2: "Financial statements", cov_us_r2y: "since 2009",
+      sec02_title: "How the Data Is Dated",
+      method1_title: "Point-in-time availability",
+      method1_p: "For tables under active monitoring, timestamps are designed to reflect true disclosure timing. Where records required manual reconstruction — for example after a collection gap — timestamps reflect when the figure entered our database instead. Table-level detail is documented for each dataset.",
+      method2_title: "Documented fallback logic",
+      method2_p: "When disclosure timing data is missing or inconsistent, we fall back to statutory filing deadlines. The full rule set is documented, not hidden.",
+      method_footnote: "Structured, cross-referenced, and timestamped through our point-in-time capture pipeline. Data may contain errors, gaps, or delays. Provided as-is, for research and reference purposes.",
+      sec03_title: "Plans",
+      pricing_note1: "Start free, try the full feed for 90 days, then subscribe when you're ready. Every paid plan is delivered by email each trading day — need a specific watchlist, financial statement fields, or a different market entirely? Reach out about a custom plan.",
+      pricing_note2: "Data provided for research and reference purposes only. Not investment advice.",
+      show_features: "Show Features +", hide_features: "Hide Features −",
+      plan_free_tag: "Free", plan_free_name: "Free Sample Feed", plan_free_unit: "no expiration",
+      plan_free_b1: "10–20 major TWSE-listed companies",
+      plan_free_b2: "Daily OHLCV, updated every trading day",
+      plan_free_b3: "Email delivery — no card required",
+      plan_free_btn: "Get Free Access →",
+      plan_trial_tag: "3-Month Trial", plan_trial_name: "Full Access Trial", plan_trial_unit: "for 90 days",
+      plan_trial_b1: "Full TWSE-listed market coverage",
+      plan_trial_b2: "Balance sheet &amp; income statement, dividends, stock splits",
+      plan_trial_b3: "Point-in-time methodology, daily updates",
+      plan_trial_b4: "Corrected data re-sent automatically when source figures are revised",
+      plan_trial_note: "Trial runs 90 days from signup. No historical dataset included. One trial per email address. Cash flow statement not yet available. If a previously delivered figure is later revised at the source, we re-send corrected data within a limited window: same trading day for closing price corrections, within 30 days of original delivery for dividend and stock-split corrections, and within the same fiscal quarter for balance sheet and income statement corrections. Corrections outside these windows are not automatically re-sent.",
+      plan_trial_btn: "Start Free Trial →",
+      plan_sub_tag: "Most popular", plan_sub_name: "Paid Subscription", plan_sub_unit: "/ month",
+      plan_sub_b1: "Everything in the Trial, with no 90-day limit",
+      plan_sub_b2: "Balance sheet &amp; income statement, dividends, stock splits",
+      plan_sub_b3: "Corrected data re-sent automatically when source figures are revised",
+      plan_sub_b4: "Cancel anytime — data already delivered is yours to keep",
+      plan_sub_note: "Typically delivered by email between 18:00–23:00 (UTC+8) daily. Cash flow statement not yet available. If a previously delivered figure is later revised at the source, we re-send corrected data within a limited window: same trading day for closing price corrections, within 30 days of original delivery for dividend and stock-split corrections, and within the same fiscal quarter for balance sheet and income statement corrections. Corrections outside these windows are not automatically re-sent.",
+      plan_sub_btn: "Subscribe →",
+      plan_custom_tag: "Extended / Custom", plan_custom_name: "Tell us what you need", plan_custom_price: "Custom",
+      plan_custom_b1: "Historical data back to 2000",
+      plan_custom_b2: "Specific watchlists, tickers, or director/supervisor holdings",
+      plan_custom_b3: "Japan / US market coverage or other bespoke requirements",
+      plan_custom_chip1: "2000–2026 history", plan_custom_chip2: "custom tickers", plan_custom_chip3: "other markets",
+      plan_custom_btn: "Contact us →",
+      plan_custom_email_prefix: "Or email us directly:",
+      sec04_title: "Try Our Sample",
+      sample_tag: "Sample Dataset",
+      sample_h3: "Taiwan Listed Companies Historical Dataset Sample (2015 Jun-Aug)",
+      sample_b1: "Preview our data structure and methodology",
+      sample_b2: "TWSE-listed companies, Jun–Aug 2015",
+      sample_b3: "One-time purchase, instant download",
+      sample_note: "adjusted_close is anchored to the most recent trading day in this sample — a later dividend or stock split would revise earlier historical values to keep that anchor. close_price is the actual traded price and never changes once published.",
+      sample_onetime: "one-time",
+      sample_buy_btn: "Buy Sample →",
+      sec05_title: "Team",
+      team_mission: "BQI Data is built and maintained by Shaochieh Hu, maintaining structured price, financial statement, and dividend data for Taiwan, Japan, and US markets — with a focus on point-in-time methodology that avoids look-ahead bias.",
+      leader_b1: "Building BQI Data — structured, point-in-time financial market data for Taiwan, Japan, and US markets",
+      leader_b2: "Built and maintained real-time financial data pipelines at Yuanta Securities Investment Trust, engineering NAV estimation systems across the firm's ETF lineup",
+      leader_b3: "Experienced integrating Bloomberg, Refinitiv, and ICE data feeds",
+      sec06_title: "FAQ",
+      faq_q1: "What is point-in-time data, and why does it matter?",
+      faq_a1: "Point-in-time data reflects only the information that was actually available as of each historical date — for example, market cap is calculated using the share capital figure known at that time, not the figure known today. This avoids look-ahead bias in backtests.",
+      faq_q2: "What markets and time ranges do you cover?",
+      faq_a2: "Taiwan (TWSE), with additional Japan and US datasets available. See the Market Coverage section above for exact date ranges per data type.",
+      faq_q3: "What's the difference between Free, the Trial, and the Paid Subscription?",
+      faq_a3: "Free gives you daily OHLCV for a small set of major TWSE-listed companies, with no expiration, at no cost. The 3-Month Trial unlocks the full TWSE-listed market — balance sheet and income statement, dividends, stock splits, and point-in-time methodology — for 90 days, but without a historical dataset. Cash flow statement data is not yet available on any plan. The Paid Subscription includes everything in the Trial on an ongoing basis — with no 90-day cutoff — so delivery continues for as long as you're subscribed.",
+      faq_q4: "Do I need a credit card for the Free plan or the Trial?",
+      faq_a4: "No. Both Free and the 3-Month Trial only require an email address. Card details are only needed if you subscribe to a paid plan.",
+      faq_q5: "What happens when my trial ends?",
+      faq_a5: "Delivery simply stops after 90 days — you won't be automatically charged. If you'd like to keep receiving data, subscribe to the Paid plan whenever you're ready. Each email address is eligible for one trial.",
+      faq_q6: "How is the data delivered?",
+      faq_a6: "By email as a CSV file, typically delivered daily within an 18:00–23:00 (UTC+8) window. No API key or integration required.",
+      faq_q7: "Can I cancel my subscription anytime?",
+      faq_a7: "Yes, subscriptions can be cancelled anytime through your Polar customer portal, effective at the end of the current billing period. Any data already delivered to you is yours to keep; cancelling only stops future deliveries.",
+      faq_q8: "What if a data point I already received turns out to be wrong or gets revised?",
+      faq_a8: "For the Trial and Paid Subscription, corrected data is re-sent automatically when source figures are revised — same trading day for closing prices, within 30 days of original delivery for dividends and stock splits, and within the same fiscal quarter for balance sheet and income statement items. Outside those windows, or if you spot something that looks wrong, email us at bqi.mitty@gmail.com with the ticker and date and we'll investigate.",
+      faq_q9: "Can I resell or redistribute the data?",
+      faq_a9: "No — data is licensed for internal research use only. Redistribution or resale of raw data requires written permission.",
+      faq_q10: "Is this investment advice?",
+      faq_a10: "No. Data is provided for research and reference purposes only.",
+      faq_q11: "Do you offer custom datasets (different markets, fields, or history)?",
+      faq_a11: "Yes — see the Extended / Custom plan, or email us directly to discuss your needs.",
+      sec07_title: "Looking for More?",
+      contact_p: "Longer date ranges, additional markets, or additional fields — financial statements, director/supervisor holdings, business indicators. Reach out and we'll put together a plan that fits your research.",
+      contact_legal: '<strong style="color: var(--ink);">License:</strong> Data is licensed for internal research use only. Redistribution or resale of raw data is prohibited without written permission.<br><br><strong style="color: var(--ink);">Privacy:</strong> If you contact us by email, we use your message only to respond to your inquiry. We do not sell or share your contact information with third parties.',
+      footer_disclaimer: "Data provided for research and reference purposes only. Not investment advice.",
+      footer_terms: "Terms of Use", footer_privacy: "Privacy Policy",
+      sending: "Sending...",
+      signup_success: "Thanks — we've received your request. You'll hear from us by email once it's set up.",
+      err_invalid_email: "Please enter a valid email address.",
+      err_already_submitted: "This email has already signed up recently.",
+      err_trial_used: "This email has already used its trial — one trial per email address.",
+      err_rate_limited: "Too many requests — please try again later.",
+      err_invalid_plan: "Something went wrong. Please refresh and try again.",
+      err_generic: "Something went wrong. Please try again.",
+      err_network: "Network error — please try again in a moment."
+    },
+    zh: {
+      __title: "BQI Data — 台灣、日本、美國市場 Point-in-Time 數據",
+      __html_lang: "zh-Hant",
+      toggle_label: "EN",
+      nav_coverage: "涵蓋範圍", nav_methodology: "方法論", nav_pricing: "訂閱方案",
+      nav_sample: "樣本資料", nav_team: "團隊", nav_faq: "常見問題", nav_contact: "聯絡我們",
+      nav_viewsample: "查看樣本 →",
+      ticker_note: "僅為示意資料，非即時報價",
+      hero_eyebrow: "結構化市場數據",
+      hero_h1: '歷史數據，時間戳記依<em>可驗證的揭露時點</em>——而非事後回溯認定。',
+      hero_sub: "我們維護台灣、日本與美國市場的結構化股價、財務報表及股利數據。在揭露數據允許的範圍內，依賴申報數字的指標——例如市值——採用當時可取得的資訊（point-in-time）計算，而非事後才知道的數值。",
+      hero_cta1: "取得 $0.99 樣本資料 →",
+      hero_cta2: "查看訂閱方案",
+      hero_note: "免註冊帳號．通常即時寄送",
+      sec01_title: "市場涵蓋範圍",
+      cov_tw: "台灣", cov_jp: "日本", cov_us: "美國",
+      cov_tw_r1: "股價數據", cov_tw_r1y: "自 1992 年起",
+      cov_tw_r2: "財務報表", cov_tw_r2y: "自 1989 年起",
+      cov_tw_r3: "董監事持股", cov_tw_r3y: "自 2000 年起",
+      cov_tw_r4: "景氣指標", cov_tw_r4y: "自 1982 年起",
+      cov_tw_r5: "股利數據", cov_tw_r5y: "自 2000 年起",
+      cov_jp_r1: "股價數據", cov_jp_r1y: "自 1999 年起",
+      cov_jp_r2: "財務報表", cov_jp_r2y: "自 2014 年起",
+      cov_us_r1: "股價數據", cov_us_r1y: "自 1993 年起",
+      cov_us_r2: "財務報表", cov_us_r2y: "自 2009 年起",
+      sec02_title: "數據時間戳記如何產生",
+      method1_title: "Point-in-time 即時可得性",
+      method1_p: "對於持續監控中的資料表，時間戳記的設計目的是反映真實的揭露時點。若記錄需要人工重建——例如在資料蒐集出現缺口之後——時間戳記則改為反映該數字進入我們資料庫的時間。每個資料集皆有資料表層級的詳細說明文件。",
+      method2_title: "有文件記載的備援邏輯",
+      method2_p: "當揭露時點數據缺漏或不一致時，我們會改採法定申報截止日作為備援依據。完整規則皆有文件記載，並不隱藏。",
+      method_footnote: "透過我們的 point-in-time 擷取流程進行結構化整理、交叉比對並加上時間戳記。數據可能存在錯誤、缺漏或延遲，僅以「現況」提供，供研究與參考之用。",
+      sec03_title: "訂閱方案",
+      pricing_note1: "免費開始使用，先試用完整資料 90 天，準備好後再訂閱。所有付費方案皆於每個交易日以電子郵件寄送——如需特定觀察清單、財務報表欄位，或完全不同的市場，歡迎聯繫我們討論客製化方案。",
+      pricing_note2: "數據僅供研究與參考之用，並非投資建議。",
+      show_features: "顯示欄位 +", hide_features: "隱藏欄位 −",
+      plan_free_tag: "免費", plan_free_name: "免費樣本資料", plan_free_unit: "永久有效",
+      plan_free_b1: "10–20 家台股上市主要企業",
+      plan_free_b2: "每日 OHLCV，逐交易日更新",
+      plan_free_b3: "電子郵件寄送——免信用卡",
+      plan_free_btn: "取得免費資料 →",
+      plan_trial_tag: "3個月試用", plan_trial_name: "完整功能試用", plan_trial_unit: "為期 90 天",
+      plan_trial_b1: "完整台股上市市場涵蓋",
+      plan_trial_b2: "資產負債表與損益表、股利、股票分割",
+      plan_trial_b3: "Point-in-time 方法論，逐日更新",
+      plan_trial_b4: "來源數字修正時，會自動重新寄送更正後的數據",
+      plan_trial_note: "試用期自註冊日起算 90 天。不含歷史資料集。每組電子郵件地址僅限試用一次。現金流量表尚未提供。若先前寄送的數字後續於來源端修正，我們會在有限期間內重新寄送更正後的數據：收盤價更正於當日交易日內；股利與股票分割更正於原始寄送後 30 天內；資產負債表與損益表更正於同一會計季度內。超出上述期間的更正將不會自動重新寄送。",
+      plan_trial_btn: "開始免費試用 →",
+      plan_sub_tag: "最受歡迎", plan_sub_name: "付費訂閱", plan_sub_unit: "／月",
+      plan_sub_b1: "涵蓋試用方案所有內容，且無 90 天期限",
+      plan_sub_b2: "資產負債表與損益表、股利、股票分割",
+      plan_sub_b3: "來源數字修正時，會自動重新寄送更正後的數據",
+      plan_sub_b4: "隨時可取消——已寄送的數據永久歸您所有",
+      plan_sub_note: "通常於每日 18:00–23:00（UTC+8）以電子郵件寄送。現金流量表尚未提供。若先前寄送的數字後續於來源端修正，我們會在有限期間內重新寄送更正後的數據：收盤價更正於當日交易日內；股利與股票分割更正於原始寄送後 30 天內；資產負債表與損益表更正於同一會計季度內。超出上述期間的更正將不會自動重新寄送。",
+      plan_sub_btn: "訂閱 →",
+      plan_custom_tag: "延伸／客製化", plan_custom_name: "告訴我們您的需求", plan_custom_price: "客製化",
+      plan_custom_b1: "歷史數據回溯至 2000 年",
+      plan_custom_b2: "特定觀察清單、股票代碼，或董監事持股",
+      plan_custom_b3: "日本／美國市場涵蓋，或其他客製化需求",
+      plan_custom_chip1: "2000–2026 年歷史資料", plan_custom_chip2: "客製化股票代碼", plan_custom_chip3: "其他市場",
+      plan_custom_btn: "聯絡我們 →",
+      plan_custom_email_prefix: "或直接寄信給我們：",
+      sec04_title: "試用我們的樣本資料",
+      sample_tag: "樣本資料集",
+      sample_h3: "台股上市公司歷史數據樣本（2015 年 6 月–8 月）",
+      sample_b1: "預覽我們的資料結構與方法論",
+      sample_b2: "台股上市公司，2015 年 6 月至 8 月",
+      sample_b3: "單次購買，即時下載",
+      sample_note: "adjusted_close（還原股價）以本樣本中最近一個交易日為基準——後續若有股利或股票分割，將回溯調整先前的歷史數值以維持該基準。close_price（收盤價）則為實際成交價格，一經公布即不會變動。",
+      sample_onetime: "單次購買",
+      sample_buy_btn: "購買樣本 →",
+      sec05_title: "團隊",
+      team_mission: "BQI Data 由 Shaochieh Hu 建置與維護，提供台灣、日本與美國市場的結構化股價、財務報表與股利數據——著重於避免前視偏誤（look-ahead bias）的 point-in-time 方法論。",
+      leader_b1: "打造 BQI Data——提供台灣、日本與美國市場的結構化 point-in-time 金融市場數據",
+      leader_b2: "曾於元大投信建置並維護即時金融數據管線，負責該公司 ETF 產品線的淨值（NAV）估算系統開發",
+      leader_b3: "具備整合 Bloomberg、Refinitiv 與 ICE 數據源的經驗",
+      sec06_title: "常見問題",
+      faq_q1: "什麼是 point-in-time 數據？為什麼它很重要？",
+      faq_a1: "Point-in-time 數據僅反映在每個歷史日期當下實際可取得的資訊——例如，市值是以當時已知的股本數字計算，而非以今日已知的數字計算。這能避免回測中出現前視偏誤（look-ahead bias）。",
+      faq_q2: "你們涵蓋哪些市場與時間範圍？",
+      faq_a2: "台灣（TWSE），另提供日本與美國數據集。各資料類型的確切時間範圍請參見上方「市場涵蓋範圍」章節。",
+      faq_q3: "免費方案、試用方案與付費訂閱有什麼差別？",
+      faq_a3: "免費方案提供少數台股上市主要企業的每日 OHLCV，永久有效且完全免費。3個月試用方案則開放完整的台股上市市場——包含資產負債表與損益表、股利、股票分割，以及 point-in-time 方法論——為期 90 天，但不含歷史數據集。目前所有方案皆尚未提供現金流量表數據。付費訂閱則持續提供試用方案的所有內容——沒有 90 天的期限——只要您維持訂閱，寄送就會持續進行。",
+      faq_q4: "免費方案或試用方案需要信用卡嗎？",
+      faq_a4: "不需要。免費方案與 3個月試用方案都只需要電子郵件地址即可。只有訂閱付費方案時才需要提供信用卡資訊。",
+      faq_q5: "試用期結束後會怎麼樣？",
+      faq_a5: "90 天後寄送會自動停止——不會自動向您收費。若您想繼續收到數據，可在準備好時訂閱付費方案。每組電子郵件地址僅限試用一次。",
+      faq_q6: "數據如何寄送？",
+      faq_a6: "以電子郵件寄送 CSV 檔案，通常於每日 18:00–23:00（UTC+8）之間寄達。無需 API 金鑰或系統串接。",
+      faq_q7: "我可以隨時取消訂閱嗎？",
+      faq_a7: "可以，您可以隨時透過 Polar 客戶入口網站取消訂閱，取消將於目前計費週期結束時生效。已寄送給您的數據仍歸您所有；取消僅會停止後續的寄送。",
+      faq_q8: "如果我已收到的數據後來被發現有誤或遭到修正，該怎麼辦？",
+      faq_a8: "對於試用方案與付費訂閱，當來源數字修正時，我們會自動重新寄送更正後的數據——收盤價於當日交易日內；股利與股票分割於原始寄送後 30 天內；資產負債表與損益表項目於同一會計季度內。若超出上述期間，或您發現任何看起來有誤的地方，請將股票代碼與日期寄至 bqi.mitty@gmail.com，我們將會進行調查。",
+      faq_q9: "我可以轉售或重新散布這些數據嗎？",
+      faq_a9: "不可以——數據僅授權供內部研究使用。若要重新散布或轉售原始數據，須取得書面同意。",
+      faq_q10: "這是投資建議嗎？",
+      faq_a10: "不是。數據僅供研究與參考之用。",
+      faq_q11: "你們是否提供客製化數據集（不同市場、欄位或歷史區間）？",
+      faq_a11: "提供——請參考「延伸／客製化」方案，或直接寄信與我們討論您的需求。",
+      sec07_title: "想了解更多？",
+      contact_p: "更長的時間範圍、更多市場，或額外欄位——財務報表、董監事持股、景氣指標。歡迎與我們聯繫，我們將為您規劃符合研究需求的方案。",
+      contact_legal: '<strong style="color: var(--ink);">授權條款：</strong>數據僅授權供內部研究使用。未經書面同意，禁止重新散布或轉售原始數據。<br><br><strong style="color: var(--ink);">隱私權：</strong>若您透過電子郵件與我們聯繫，我們僅會使用您的訊息內容來回覆您的詢問。我們不會出售或與第三方分享您的聯絡資訊。',
+      footer_disclaimer: "數據僅供研究與參考之用，並非投資建議。",
+      footer_terms: "使用條款", footer_privacy: "隱私權政策",
+      sending: "傳送中…",
+      signup_success: "謝謝——我們已收到您的申請。設定完成後將以電子郵件通知您。",
+      err_invalid_email: "請輸入有效的電子郵件地址。",
+      err_already_submitted: "此電子郵件近期已完成申請。",
+      err_trial_used: "此電子郵件已使用過試用資格——每組電子郵件僅限試用一次。",
+      err_rate_limited: "請求次數過多，請稍後再試。",
+      err_invalid_plan: "發生錯誤，請重新整理頁面後再試一次。",
+      err_generic: "發生錯誤，請再試一次。",
+      err_network: "網路連線錯誤，請稍後再試。"
+    }
+  };
+
+  function getStoredLang(){
+    try { return localStorage.getItem('bqi_lang'); } catch(e){ return null; }
+  }
+  function storeLang(lang){
+    try { localStorage.setItem('bqi_lang', lang); } catch(e){ /* ignore */ }
+  }
+
+  let currentLang = getStoredLang() === 'zh' ? 'zh' : 'en';
+
+  function applyLang(lang){
+    currentLang = lang;
+    const dict = I18N[lang];
+    document.documentElement.setAttribute('lang', dict.__html_lang);
+    document.title = dict.__title;
+    document.getElementById('langToggle').textContent = dict.toggle_label;
+
+    document.querySelectorAll('[data-i18n]').forEach(function(el){
+      const key = el.getAttribute('data-i18n');
+      if (dict[key] != null) el.textContent = dict[key];
+    });
+    document.querySelectorAll('[data-i18n-html]').forEach(function(el){
+      const key = el.getAttribute('data-i18n-html');
+      if (dict[key] != null) el.innerHTML = dict[key];
+    });
+    document.querySelectorAll('[data-i18n-placeholder]').forEach(function(el){
+      const key = el.getAttribute('data-i18n-placeholder');
+      if (dict[key] != null) el.placeholder = dict[key];
+    });
+
+    storeLang(lang);
+  }
+
+  function toggleLang(){
+    applyLang(currentLang === 'en' ? 'zh' : 'en');
+  }
+
+  applyLang(currentLang);
 </script>
 
 </body>

@@ -13,7 +13,7 @@
 
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Privacy Policy — BQI Data</title>
+<title id="pageTitle">Privacy Policy — BQI Data</title>
 <style>
   :root{
     --bg: #0B1220;
@@ -40,6 +40,8 @@
     display:flex; align-items:center; justify-content:space-between;
     padding: 22px 6vw;
     border-bottom: 1px solid var(--panel-line);
+    gap: 16px;
+    flex-wrap: wrap;
   }
   .brand{
     font-family: var(--grotesk); font-weight: 700; font-size: 18px;
@@ -50,8 +52,21 @@
     width:8px; height:8px; border-radius:50%;
     background: var(--amber); box-shadow: 0 0 8px 2px rgba(232,163,61,0.5);
   }
+  .header-actions{ display:flex; align-items:center; gap: 18px; }
   .back-link{ font-family: var(--mono); font-size: 13px; color: var(--ink-dim); text-decoration:none; }
   .back-link:hover{ color: var(--amber); }
+  .lang-toggle{
+    font-family: var(--mono);
+    font-size: 12px;
+    letter-spacing: 0.03em;
+    padding: 9px 14px;
+    border-radius: 3px;
+    border: 1px solid var(--panel-line);
+    background: none;
+    color: var(--ink);
+    cursor: pointer;
+  }
+  .lang-toggle:hover{ border-color: var(--amber); color: var(--amber); }
   main{ max-width: 760px; margin: 0 auto; padding: 60px 6vw 100px; }
   .eyebrow{
     font-family: var(--mono); font-size: 12px; color: var(--amber);
@@ -83,61 +98,181 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
   <header class="site">
     <a class="brand" href="index.html"><span class="dot"></span>BQI DATA</a>
-    <a class="back-link" href="index.html">← Back to site</a>
+    <div class="header-actions">
+      <button type="button" class="lang-toggle" id="langToggle" onclick="toggleLang()">中文</button>
+      <a class="back-link" href="index.html" data-i18n="back_link">← Back to site</a>
+    </div>
   </header>
 
   <main>
-    <div class="eyebrow">Legal</div>
-    <h1>Privacy Policy</h1>
-    <div class="updated">Last updated: September 2026</div>
+    <div class="eyebrow" data-i18n="eyebrow">Legal</div>
+    <h1 data-i18n="h1">Privacy Policy</h1>
+    <div class="updated" data-i18n="updated">Last updated: September 2026</div>
 
-    <p>This Privacy Policy explains how BQI Data ("we", "us"), operated by Shaochieh Hu, collects, uses, and protects information when you visit our website or purchase our data products.</p>
+    <p data-i18n="intro">This Privacy Policy explains how BQI Data ("we", "us"), operated by Shaochieh Hu, collects, uses, and protects information when you visit our website or purchase our data products.</p>
 
-    <h2>1. Information we collect</h2>
-    <p>We collect information in three ways:</p>
+    <h2 data-i18n="h2_1">1. Information we collect</h2>
+    <p data-i18n="s1_p">We collect information in three ways:</p>
     <ul>
-      <li><strong>Purchases and subscriptions:</strong> When you buy a sample or subscribe to a plan, checkout is processed by Polar (polar.sh), our merchant of record. Polar collects your email address and payment details directly; we receive your email address and order information from Polar in order to deliver your data and provide support. We do not receive or store your payment card details.</li>
-      <li><strong>Direct contact:</strong> If you email us directly, we receive whatever information you choose to include in that message (typically your email address and inquiry).</li>
-      <li><strong>Website usage:</strong> We use Google Analytics to collect basic usage information about visits to our website, such as which pages are viewed and how visitors arrive at the site. See Section 6 below for details.</li>
+      <li data-i18n-html="s1_li1"><strong>Purchases and subscriptions:</strong> When you buy a sample or subscribe to a plan, checkout is processed by Polar (polar.sh), our merchant of record. Polar collects your email address and payment details directly; we receive your email address and order information from Polar in order to deliver your data and provide support. We do not receive or store your payment card details.</li>
+      <li data-i18n-html="s1_li2"><strong>Direct contact:</strong> If you email us directly, we receive whatever information you choose to include in that message (typically your email address and inquiry).</li>
+      <li data-i18n-html="s1_li3"><strong>Website usage:</strong> We use Google Analytics to collect basic usage information about visits to our website, such as which pages are viewed and how visitors arrive at the site. See Section 6 below for details.</li>
     </ul>
 
-    <h2>2. How we use your information</h2>
+    <h2 data-i18n="h2_2">2. How we use your information</h2>
     <ul>
-      <li>To deliver purchased datasets and daily subscription feeds by email;</li>
-      <li>To respond to inquiries and provide customer support;</li>
-      <li>To investigate and correct reported data issues;</li>
-      <li>To meet legal and tax obligations related to processing payments;</li>
-      <li>To understand overall website traffic and usage, via Google Analytics.</li>
+      <li data-i18n="s2_li1">To deliver purchased datasets and daily subscription feeds by email;</li>
+      <li data-i18n="s2_li2">To respond to inquiries and provide customer support;</li>
+      <li data-i18n="s2_li3">To investigate and correct reported data issues;</li>
+      <li data-i18n="s2_li4">To meet legal and tax obligations related to processing payments;</li>
+      <li data-i18n="s2_li5">To understand overall website traffic and usage, via Google Analytics.</li>
     </ul>
-    <p>We do not use your information for advertising, and we do not sell or rent your contact information to third parties.</p>
+    <p data-i18n="s2_p">We do not use your information for advertising, and we do not sell or rent your contact information to third parties.</p>
 
-    <h2>3. Third parties</h2>
-    <p>Polar acts as our payment processor and merchant of record and processes your payment and billing information under its own privacy policy. We recommend reviewing <a href="https://polar.sh/legal/privacy" target="_blank" rel="noopener">Polar's privacy policy</a> for details on how they handle your data. We use Brevo for email delivery of purchased datasets. We use Google Analytics and Google Tag Manager to measure website traffic and usage; see <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google's Privacy Policy</a> for details on how Google processes this data.</p>
+    <h2 data-i18n="h2_3">3. Third parties</h2>
+    <p data-i18n-html="s3_p">Polar acts as our payment processor and merchant of record and processes your payment and billing information under its own privacy policy. We recommend reviewing <a href="https://polar.sh/legal/privacy" target="_blank" rel="noopener">Polar's privacy policy</a> for details on how they handle your data. We use Brevo for email delivery of purchased datasets. We use Google Analytics and Google Tag Manager to measure website traffic and usage; see <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google's Privacy Policy</a> for details on how Google processes this data.</p>
 
-    <h2>4. Data retention</h2>
-    <p>We retain order and correspondence records for as long as reasonably necessary to provide the Service, respond to support requests, and meet accounting and legal obligations.</p>
+    <h2 data-i18n="h2_4">4. Data retention</h2>
+    <p data-i18n="s4_p">We retain order and correspondence records for as long as reasonably necessary to provide the Service, respond to support requests, and meet accounting and legal obligations.</p>
 
-    <h2>5. Your rights</h2>
-    <p>You may request access to, correction of, or deletion of the personal information we hold about you by emailing <a href="mailto:bqi.mitty@gmail.com">bqi.mitty@gmail.com</a>. If your inquiry relates to payment information, we may direct you to Polar, who holds that data on our behalf.</p>
-    <p>Some of the historical data we distribute (for example, director and supervisor shareholding records) is compiled from information that Taiwan-listed companies are legally required to disclose publicly. If you are named in this data and would like it removed from our datasets, please contact us and we will review your request.</p>
+    <h2 data-i18n="h2_5">5. Your rights</h2>
+    <p data-i18n-html="s5_p1">You may request access to, correction of, or deletion of the personal information we hold about you by emailing <a href="mailto:bqi.mitty@gmail.com">bqi.mitty@gmail.com</a>. If your inquiry relates to payment information, we may direct you to Polar, who holds that data on our behalf.</p>
+    <p data-i18n="s5_p2">Some of the historical data we distribute (for example, director and supervisor shareholding records) is compiled from information that Taiwan-listed companies are legally required to disclose publicly. If you are named in this data and would like it removed from our datasets, please contact us and we will review your request.</p>
 
-    <h2>6. Cookies and tracking</h2>
-    <p>We use Google Analytics, deployed via Google Tag Manager, to understand how visitors use our website — for example, which pages are viewed and how visitors arrive at the site. These services may set cookies in your browser to collect this usage information. We do not use this data for advertising, and we do not combine it with your order or subscription information. You can opt out of Google Analytics tracking using <a href="https://tools.google.com/dlpage/gaoptout" target="_blank" rel="noopener">Google's browser add-on</a> or by adjusting your browser's cookie settings. Any session information used at checkout is handled by Polar under its own policy.</p>
+    <h2 data-i18n="h2_6">6. Cookies and tracking</h2>
+    <p data-i18n-html="s6_p">We use Google Analytics, deployed via Google Tag Manager, to understand how visitors use our website — for example, which pages are viewed and how visitors arrive at the site. These services may set cookies in your browser to collect this usage information. We do not use this data for advertising, and we do not combine it with your order or subscription information. You can opt out of Google Analytics tracking using <a href="https://tools.google.com/dlpage/gaoptout" target="_blank" rel="noopener">Google's browser add-on</a> or by adjusting your browser's cookie settings. Any session information used at checkout is handled by Polar under its own policy.</p>
 
-    <h2>7. International users</h2>
-    <p>If you are located in the European Economic Area, United Kingdom, or elsewhere with data protection laws that grant you additional rights, you may exercise those rights by contacting us at the email above.</p>
+    <h2 data-i18n="h2_7">7. International users</h2>
+    <p data-i18n="s7_p">If you are located in the European Economic Area, United Kingdom, or elsewhere with data protection laws that grant you additional rights, you may exercise those rights by contacting us at the email above.</p>
 
-    <h2>8. Children's privacy</h2>
-    <p>The Service is not directed at, and we do not knowingly collect information from, individuals under the age of 18.</p>
+    <h2 data-i18n="h2_8">8. Children's privacy</h2>
+    <p data-i18n="s8_p">The Service is not directed at, and we do not knowingly collect information from, individuals under the age of 18.</p>
 
-    <h2>9. Changes to this policy</h2>
-    <p>We may update this Privacy Policy from time to time. Material changes will be reflected by updating the "Last updated" date above.</p>
+    <h2 data-i18n="h2_9">9. Changes to this policy</h2>
+    <p data-i18n="s9_p">We may update this Privacy Policy from time to time. Material changes will be reflected by updating the "Last updated" date above.</p>
 
-    <h2>10. Contact</h2>
-    <p>Questions about this Privacy Policy can be sent to <a href="mailto:bqi.mitty@gmail.com">bqi.mitty@gmail.com</a>.</p>
+    <h2 data-i18n="h2_10">10. Contact</h2>
+    <p data-i18n-html="s10_p">Questions about this Privacy Policy can be sent to <a href="mailto:bqi.mitty@gmail.com">bqi.mitty@gmail.com</a>.</p>
   </main>
 
   <footer>© 2026 BQI Data</footer>
+
+<script>
+  const I18N = {
+    en: {
+      __title: "Privacy Policy — BQI Data",
+      __html_lang: "en",
+      toggle_label: "中文",
+      back_link: "← Back to site",
+      eyebrow: "Legal",
+      h1: "Privacy Policy",
+      updated: "Last updated: September 2026",
+      intro: 'This Privacy Policy explains how BQI Data ("we", "us"), operated by Shaochieh Hu, collects, uses, and protects information when you visit our website or purchase our data products.',
+      h2_1: "1. Information we collect",
+      s1_p: "We collect information in three ways:",
+      s1_li1: '<strong>Purchases and subscriptions:</strong> When you buy a sample or subscribe to a plan, checkout is processed by Polar (polar.sh), our merchant of record. Polar collects your email address and payment details directly; we receive your email address and order information from Polar in order to deliver your data and provide support. We do not receive or store your payment card details.',
+      s1_li2: '<strong>Direct contact:</strong> If you email us directly, we receive whatever information you choose to include in that message (typically your email address and inquiry).',
+      s1_li3: '<strong>Website usage:</strong> We use Google Analytics to collect basic usage information about visits to our website, such as which pages are viewed and how visitors arrive at the site. See Section 6 below for details.',
+      h2_2: "2. How we use your information",
+      s2_li1: "To deliver purchased datasets and daily subscription feeds by email;",
+      s2_li2: "To respond to inquiries and provide customer support;",
+      s2_li3: "To investigate and correct reported data issues;",
+      s2_li4: "To meet legal and tax obligations related to processing payments;",
+      s2_li5: "To understand overall website traffic and usage, via Google Analytics.",
+      s2_p: "We do not use your information for advertising, and we do not sell or rent your contact information to third parties.",
+      h2_3: "3. Third parties",
+      s3_p: 'Polar acts as our payment processor and merchant of record and processes your payment and billing information under its own privacy policy. We recommend reviewing <a href="https://polar.sh/legal/privacy" target="_blank" rel="noopener">Polar\'s privacy policy</a> for details on how they handle your data. We use Brevo for email delivery of purchased datasets. We use Google Analytics and Google Tag Manager to measure website traffic and usage; see <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google\'s Privacy Policy</a> for details on how Google processes this data.',
+      h2_4: "4. Data retention",
+      s4_p: "We retain order and correspondence records for as long as reasonably necessary to provide the Service, respond to support requests, and meet accounting and legal obligations.",
+      h2_5: "5. Your rights",
+      s5_p1: 'You may request access to, correction of, or deletion of the personal information we hold about you by emailing <a href="mailto:bqi.mitty@gmail.com">bqi.mitty@gmail.com</a>. If your inquiry relates to payment information, we may direct you to Polar, who holds that data on our behalf.',
+      s5_p2: "Some of the historical data we distribute (for example, director and supervisor shareholding records) is compiled from information that Taiwan-listed companies are legally required to disclose publicly. If you are named in this data and would like it removed from our datasets, please contact us and we will review your request.",
+      h2_6: "6. Cookies and tracking",
+      s6_p: 'We use Google Analytics, deployed via Google Tag Manager, to understand how visitors use our website — for example, which pages are viewed and how visitors arrive at the site. These services may set cookies in your browser to collect this usage information. We do not use this data for advertising, and we do not combine it with your order or subscription information. You can opt out of Google Analytics tracking using <a href="https://tools.google.com/dlpage/gaoptout" target="_blank" rel="noopener">Google\'s browser add-on</a> or by adjusting your browser\'s cookie settings. Any session information used at checkout is handled by Polar under its own policy.',
+      h2_7: "7. International users",
+      s7_p: "If you are located in the European Economic Area, United Kingdom, or elsewhere with data protection laws that grant you additional rights, you may exercise those rights by contacting us at the email above.",
+      h2_8: "8. Children's privacy",
+      s8_p: "The Service is not directed at, and we do not knowingly collect information from, individuals under the age of 18.",
+      h2_9: "9. Changes to this policy",
+      s9_p: 'We may update this Privacy Policy from time to time. Material changes will be reflected by updating the "Last updated" date above.',
+      h2_10: "10. Contact",
+      s10_p: 'Questions about this Privacy Policy can be sent to <a href="mailto:bqi.mitty@gmail.com">bqi.mitty@gmail.com</a>.'
+    },
+    zh: {
+      __title: "隱私權政策 — BQI Data",
+      __html_lang: "zh-Hant",
+      toggle_label: "EN",
+      back_link: "← 返回首頁",
+      eyebrow: "法律聲明",
+      h1: "隱私權政策",
+      updated: "最後更新：2026 年 9 月",
+      intro: "本隱私權政策說明由 Shaochieh Hu 所營運的 BQI Data（以下稱「我們」）在您造訪本網站或購買我們的數據產品時，如何蒐集、使用及保護相關資訊。",
+      h2_1: "一、我們蒐集的資訊",
+      s1_p: "我們透過三種方式蒐集資訊：",
+      s1_li1: '<strong>購買與訂閱：</strong>當您購買樣本或訂閱方案時，結帳作業由我們的記錄商家 Polar（polar.sh）處理。Polar 會直接蒐集您的電子郵件地址與付款資訊；我們則會從 Polar 取得您的電子郵件地址與訂單資訊，以便寄送數據及提供客服支援。我們不會取得或儲存您的信用卡付款資訊。',
+      s1_li2: '<strong>直接聯繫：</strong>若您直接寄信給我們，我們會收到您在信件中提供的任何資訊（通常為您的電子郵件地址與詢問內容）。',
+      s1_li3: '<strong>網站使用情形：</strong>我們使用 Google Analytics 蒐集基本的網站使用資訊，例如瀏覽了哪些頁面，以及訪客如何抵達本網站。詳情請見下方第 6 節。',
+      h2_2: "二、我們如何使用您的資訊",
+      s2_li1: "以電子郵件寄送您購買的數據集與每日訂閱資料；",
+      s2_li2: "回覆詢問並提供客戶支援；",
+      s2_li3: "調查並更正回報的數據問題；",
+      s2_li4: "履行與付款處理相關的法律及稅務義務；",
+      s2_li5: "透過 Google Analytics 了解整體網站流量與使用情形。",
+      s2_p: "我們不會將您的資訊用於廣告用途，也不會將您的聯絡資訊出售或出租給第三方。",
+      h2_3: "三、第三方服務",
+      s3_p: '我們的付款處理商暨記錄商家 Polar，會依其自身的隱私權政策處理您的付款與帳務資訊。建議您參閱 <a href="https://polar.sh/legal/privacy" target="_blank" rel="noopener">Polar 的隱私權政策</a>，了解其如何處理您的資料。我們使用 Brevo 寄送您所購買的數據集。我們使用 Google Analytics 與 Google Tag Manager 來衡量網站流量與使用情形；詳情請參閱 <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google 的隱私權政策</a>，了解 Google 如何處理此類資料。',
+      h2_4: "四、資料保存",
+      s4_p: "我們會在合理必要的期間內保存訂單與通訊紀錄，以提供本服務、回應支援請求，並履行會計與法律義務。",
+      h2_5: "五、您的權利",
+      s5_p1: '您可以透過電子郵件 <a href="mailto:bqi.mitty@gmail.com">bqi.mitty@gmail.com</a> 要求查閱、更正或刪除我們持有的您的個人資訊。若您的詢問與付款資訊有關，我們可能會請您改與代我們保管該資料的 Polar 聯繫。',
+      s5_p2: "我們所提供的部分歷史數據（例如董監事持股紀錄）係彙整自台灣上市公司依法必須公開揭露的資訊。若您的姓名出現於此類數據中，並希望自我們的數據集中移除，請與我們聯繫，我們將審核您的請求。",
+      h2_6: "六、Cookie 與追蹤技術",
+      s6_p: '我們透過 Google Tag Manager 部署 Google Analytics，以了解訪客如何使用本網站——例如瀏覽了哪些頁面，以及訪客如何抵達本網站。這些服務可能會在您的瀏覽器中設置 Cookie 以蒐集此類使用資訊。我們不會將此資料用於廣告用途，也不會將其與您的訂單或訂閱資訊合併。您可以使用 <a href="https://tools.google.com/dlpage/gaoptout" target="_blank" rel="noopener">Google 提供的瀏覽器附加元件</a>，或調整瀏覽器的 Cookie 設定，選擇退出 Google Analytics 追蹤。結帳時使用的任何工作階段資訊，均依 Polar 自身的政策處理。',
+      h2_7: "七、國際使用者",
+      s7_p: "若您位於歐洲經濟區、英國，或其他具有賦予您額外權利之資料保護法規的地區，您可透過上方的電子郵件地址與我們聯繫，行使該等權利。",
+      h2_8: "八、兒童隱私",
+      s8_p: "本服務並非針對 18 歲以下人士，我們也不會在知情的情況下蒐集其資訊。",
+      h2_9: "九、本政策之變更",
+      s9_p: "我們可能不定期更新本隱私權政策。若有重大變更，將反映於上方的「最後更新」日期。",
+      h2_10: "十、聯絡我們",
+      s10_p: '有關本隱私權政策的問題，可寄送至 <a href="mailto:bqi.mitty@gmail.com">bqi.mitty@gmail.com</a>。'
+    }
+  };
+
+  function getStoredLang(){
+    try { return localStorage.getItem('bqi_lang'); } catch(e){ return null; }
+  }
+  function storeLang(lang){
+    try { localStorage.setItem('bqi_lang', lang); } catch(e){ /* ignore */ }
+  }
+
+  let currentLang = getStoredLang() === 'zh' ? 'zh' : 'en';
+
+  function applyLang(lang){
+    currentLang = lang;
+    const dict = I18N[lang];
+    document.documentElement.setAttribute('lang', dict.__html_lang);
+    document.title = dict.__title;
+    document.getElementById('langToggle').textContent = dict.toggle_label;
+
+    document.querySelectorAll('[data-i18n]').forEach(function(el){
+      const key = el.getAttribute('data-i18n');
+      if (dict[key] != null) el.textContent = dict[key];
+    });
+    document.querySelectorAll('[data-i18n-html]').forEach(function(el){
+      const key = el.getAttribute('data-i18n-html');
+      if (dict[key] != null) el.innerHTML = dict[key];
+    });
+
+    storeLang(lang);
+  }
+
+  function toggleLang(){
+    applyLang(currentLang === 'en' ? 'zh' : 'en');
+  }
+
+  applyLang(currentLang);
+</script>
 
 </body>
 </html>
