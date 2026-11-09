@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://bqi-mitty.github.io/data/sitemap.xml

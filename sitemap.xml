@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url><loc>https://bqi-mitty.github.io/data/en/</loc><xhtml:link rel="alternate" hreflang="en" href="https://bqi-mitty.github.io/data/en/"/><xhtml:link rel="alternate" hreflang="zh-TW" href="https://bqi-mitty.github.io/data/zh-tw/"/><xhtml:link rel="alternate" hreflang="x-default" href="https://bqi-mitty.github.io/data/"/></url>
+  <url><loc>https://bqi-mitty.github.io/data/zh-tw/</loc><xhtml:link rel="alternate" hreflang="en" href="https://bqi-mitty.github.io/data/en/"/><xhtml:link rel="alternate" hreflang="zh-TW" href="https://bqi-mitty.github.io/data/zh-tw/"/><xhtml:link rel="alternate" hreflang="x-default" href="https://bqi-mitty.github.io/data/"/></url>
+  <url><loc>https://bqi-mitty.github.io/data/</loc></url>
+</urlset>
