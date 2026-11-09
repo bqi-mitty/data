@@ -97,10 +97,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
 
   <header class="site">
-    <a class="brand" href="index.html"><span class="dot"></span>BQI DATA</a>
+    <a class="brand" id="brandHome" href="https://bqi-mitty.github.io/data/en/"><span class="dot"></span>BQI DATA</a>
     <div class="header-actions">
       <button type="button" class="lang-toggle" id="langToggle" onclick="toggleLang()">中文</button>
-      <a class="back-link" href="index.html" data-i18n="back_link">← Back to site</a>
+      <a class="back-link" id="backHome" href="https://bqi-mitty.github.io/data/en/" data-i18n="back_link">← Back to site</a>
     </div>
   </header>
 
@@ -246,11 +246,36 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     try { localStorage.setItem('bqi_lang', lang); } catch(e){ /* ignore */ }
   }
 
-  let currentLang = getStoredLang() === 'zh' ? 'zh' : 'en';
+  // Detect language: explicit URL parameter > referring homepage > saved preference.
+  function detectInitialLang(){
+    const params = new URLSearchParams(window.location.search);
+    const queryLang = params.get('lang');
+    if (queryLang === 'zh' || queryLang === 'zh-tw') return 'zh';
+    if (queryLang === 'en') return 'en';
+
+    try {
+      if (document.referrer) {
+        const refPath = new URL(document.referrer).pathname.toLowerCase();
+        if (refPath.includes('/data/zh-tw')) return 'zh';
+        if (refPath.includes('/data/en')) return 'en';
+      }
+    } catch(e) { /* ignore invalid or unavailable referrer */ }
+
+    return getStoredLang() === 'zh' ? 'zh' : 'en';
+  }
+
+  let currentLang = detectInitialLang();
 
   function applyLang(lang){
     currentLang = lang;
     const dict = I18N[lang];
+
+    // Point both the brand and back link to the matching language homepage.
+    const homeUrl = lang === 'zh'
+      ? 'https://bqi-mitty.github.io/data/zh-tw/'
+      : 'https://bqi-mitty.github.io/data/en/';
+    document.getElementById('brandHome').href = homeUrl;
+    document.getElementById('backHome').href = homeUrl;
     document.documentElement.setAttribute('lang', dict.__html_lang);
     document.title = dict.__title;
     document.getElementById('langToggle').textContent = dict.toggle_label;
