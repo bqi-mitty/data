@@ -715,7 +715,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </div>
 </div>
 <form class="signup-form" data-plan="free" onsubmit="return handleSignup(event)">
-<input class="signup-input" name="email" placeholder="you@email.com" required="" type="email"/>
+<input class="signup-input" name="email" placeholder="you@email.com" required="" type="email" maxlength="254" pattern="[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}" inputmode="email" autocomplete="email" oninput="sanitizeEmailInput(this)"/>
 <input aria-hidden="true" autocomplete="off" class="hp-field" name="website" tabindex="-1" type="text"/>
 <button class="btn btn-primary" type="submit">取得免費資料 →</button>
 <div class="signup-msg" role="status"></div>
@@ -747,7 +747,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <div class="plan-note">試用期自註冊日起算 90 天。不含歷史資料集。每組電子郵件地址僅限試用一次。現金流量表尚未提供。若先前寄送的數字後續於來源端修正，我們會在有限期間內重新寄送更正後的數據：收盤價更正於當日交易日內；股利與股票分割更正於原始寄送後 30 天內；資產負債表與損益表更正於同一會計季度內。超出上述期間的更正將不會自動重新寄送。</div>
 </div>
 <form class="signup-form" data-plan="trial" onsubmit="return handleSignup(event)">
-<input class="signup-input" name="email" placeholder="you@email.com" required="" type="email"/>
+<input class="signup-input" name="email" placeholder="you@email.com" required="" type="email" maxlength="254" pattern="[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}" inputmode="email" autocomplete="email" oninput="sanitizeEmailInput(this)"/>
 <input aria-hidden="true" autocomplete="off" class="hp-field" name="website" tabindex="-1" type="text"/>
 <button class="btn btn-primary" type="submit">開始免費試用 →</button>
 <div class="signup-msg" role="status"></div>
@@ -914,6 +914,23 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   // Free / Trial signup — posts to the BQI Data signup worker
   const SIGNUP_ENDPOINT = 'https://bqi-signup-worker.bqi-mitty.workers.dev/signup';
 
+  // Only letters, digits, and a small set of characters that are actually
+  // common in real-world email addresses. Deliberately excludes quotes,
+  // semicolons, angle brackets, backticks, etc. — those are technically
+  // legal in the local-part per RFC 5321/5322 but effectively never used
+  // by real senders, and allowing them only invites SQLi/XSS probing
+  // payloads like `'--x@gmail.com`. This is front-end UX/defense-in-depth
+  // only; the actual security boundary is parameterized queries server-side.
+  const EMAIL_SAFE_CHARS = /[^A-Za-z0-9._%+@-]/g;
+  const EMAIL_STRICT_PATTERN = /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/;
+
+  // Strip disallowed characters as the user types, so illegal characters
+  // never make it into the field in the first place.
+  function sanitizeEmailInput(input){
+    const cleaned = input.value.replace(EMAIL_SAFE_CHARS, '');
+    if (cleaned !== input.value) input.value = cleaned;
+  }
+
   async function handleSignup(event){
     event.preventDefault();
     const form = event.target;
@@ -926,6 +943,16 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
     msgEl.textContent = '';
     msgEl.className = 'signup-msg';
+
+    // Belt-and-braces check before we even hit the network — catches
+    // anything that slipped past the live character filter (e.g. pasted
+    // text) or doesn't look like a real email address.
+    if (!EMAIL_STRICT_PATTERN.test(email)) {
+      msgEl.textContent = I18N[currentLang].err_invalid_email;
+      msgEl.className = 'signup-msg error';
+      return false;
+    }
+
     btn.disabled = true;
     btn.textContent = I18N[currentLang].sending;
 
